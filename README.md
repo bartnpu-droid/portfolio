@@ -1,5 +1,10 @@
 # Portfolio
 
+Live demos:
+- 01 Telegram booking bot: https://t.me/NorthsideBarberDemoBot
+- 03 Dental clinic website with the AI receptionist: https://dental-clinic-production-b8f4.up.railway.app
+- 04 TACET One product landing page: https://tacet-one-production.up.railway.app
+
 ## 01 — Telegram booking bot with Mini App and online payments
 Folder: `01-telegram-booking-bot`
 Demo barbershop "Northside Barber Co." (fictional).
