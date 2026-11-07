@@ -368,7 +368,8 @@ function renderBar() {
 
 function render() {
   const screens = { service: screenService, master: screenMaster, time: screenTime, confirm: screenConfirm, done: screenDone, mine: screenMine };
-  $("view").replaceChildren(...[screens[state.screen]()].flat());
+  // screens may return null for optional parts (e.g. the refund note without online payment)
+  $("view").replaceChildren(...[screens[state.screen]()].flat().filter((c) => c !== null && c !== undefined && c !== false));
   $("myBtn").textContent = state.screen === "mine" ? tr("back") : tr("my");
   $("myBtn").onclick = () => (state.screen === "mine" ? go(state.serviceId ? "service" : "service") : go("mine"));
   setProgress(); renderBar(); syncTelegramBack();
