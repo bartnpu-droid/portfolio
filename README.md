@@ -1,0 +1,44 @@
+# Portfolio
+
+## 01 — Telegram booking bot with Mini App and online payments
+Folder: `01-telegram-booking-bot`
+Demo barbershop "Northside Barber Co." (fictional).
+- Telegram Mini App: services → barber → free time → confirmation ticket
+- Online prepayment / full payment (Telegram Payments), slot hold, refund rules
+- Reminders 24 h and 2 h before, review request after the visit
+- Admin panel: schedule, 7-day stats, services, barbers, days off, broadcast, Google Sheets export
+- Python, aiogram 3, aiohttp, SQLite, Docker, automated tests
+Run: `bash start.command` inside the folder.
+Screens: `01-telegram-booking-bot/screenshots/`
+
+## 02 — Lead generation: independent barbershops in London
+Folder: `02-london-barbershop-leads`
+- 1,153 places from OpenStreetMap → 10 duplicates removed → 8 chain locations excluded → 1,135 independents
+- Websites visited for e-mails, Instagram/Facebook and the online booking system used
+- E-mail domains checked (MX)
+- Excel report: Leads, With contacts, Summary, Excluded chains + CSV
+- Share only `output/*_sample_masked.xlsx` (contacts masked)
+Run: `bash run.command` inside the folder.
+Data © OpenStreetMap contributors (ODbL) + business websites.
+
+## 03 — Dental clinic website with 3D + AI receptionist
+Folder: `03-ai-dental-assistant`
+- 7-page clinic website with a photoreal 3D dental implant rendered in Blender (Cycles): it turns with the
+  cursor on the home page and comes apart as you scroll; cream-and-green design built around a honeycomb motif
+- AI receptionist built into the site: "Ask" next to every treatment, the chat follows the visitor across pages; also in Telegram
+- Answers only from the clinic's knowledge base (prices, hours, insurance, aftercare, emergencies); a test checks the site's prices against it
+- Appointment / callback requests (from the AI or the booking form) → Telegram notification for staff, admin stats, CSV export
+- Safety rules for medical topics, spam and budget limits, SEO, accessibility, mobile layout
+Run: `bash start.command` inside the folder (add the API key to `.env` first), then open the address it prints
+Screens: `03-ai-dental-assistant/screenshots/`
+
+## 04 — 3D product landing page
+Folder: `04-3d-product-landing`
+Concept launch page for "TACET One" noise-cancelling headphones (fictional brand), in the style of the big tech launch pages.
+- Photoreal renders of a headphone model built in Blender for this page (Cycles, Mac GPU), three colours
+- 360° view you turn by hand: 144 rendered angles per colour, always sharp; colours swap on the same angle
+- Ear cup that comes apart into five layers while the page keeps scrolling, with tags that follow the parts
+- Highlights rail, live noise-cancelling demo with a noise meter, battery counter, specs, pre-order form
+- Static site, no build step; Lighthouse 99–100 for performance, accessibility and best practices
+Run: double-click `start.command` inside the folder
+Screens: `04-3d-product-landing/screenshots/`, demo video: `04-3d-product-landing/tacet-one-demo.mp4`

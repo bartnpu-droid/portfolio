@@ -1,0 +1,85 @@
+<!--{"title": "Book a visit | BrightSmile Dental, 18 Upper Street, Islington", "description": "Request an appointment at BrightSmile Dental, 18 Upper Street, London N1 0PQ. Reception calls or texts to confirm, usually within 2 working hours. Call 020 0000 0000.", "path": "/contact"}-->
+<section class="page-hero dark">
+  <div class="wrap">
+    <h1>Book a visit</h1>
+    <p class="lead">Tell us what you need and when suits you. Reception will call or text to confirm the time, usually within 2 working hours.</p>
+  </div>
+</section>
+
+<div class="light"><div class="wrap contact-grid" id="book">
+  <form class="panel form" id="book-form" action="/api/contact" method="post" novalidate>
+    <div class="field">
+      <label for="f-name">Name</label>
+      <input id="f-name" name="name" autocomplete="name" required minlength="2" maxlength="80">
+    </div>
+    <div class="field">
+      <label for="f-phone">Phone</label>
+      <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="24">
+    </div>
+    <div class="field full">
+      <label for="f-email">Email <small>optional</small></label>
+      <input id="f-email" name="email" type="email" autocomplete="email" maxlength="120">
+    </div>
+    <div class="field">
+      <label for="f-treatment">What is the visit for?</label>
+      <select id="f-treatment" name="treatment" required>
+        <option value="">Choose one</option>
+        <option>Check-up</option>
+        <option>New patient examination</option>
+        <option>Hygiene appointment</option>
+        <option>Emergency appointment</option>
+        <option>Teeth whitening</option>
+        <option>Bonding or veneers</option>
+        <option>Clear aligners</option>
+        <option>Implants</option>
+        <option>Child check-up</option>
+        <option>Something else</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-time">When suits you?</label>
+      <input id="f-time" name="preferred_time" maxlength="120" placeholder="For example, weekday mornings">
+    </div>
+    <div class="field full">
+      <label for="f-notes">Anything we should know? <small>optional</small></label>
+      <textarea id="f-notes" name="notes" maxlength="1000" placeholder="For example, I'm a nervous patient"></textarea>
+    </div>
+    <label class="check full"><input type="checkbox" name="new_patient" value="yes"> I'm a new patient</label>
+    <label class="check full"><input type="checkbox" name="consent" value="yes" required> BrightSmile Dental may contact me by phone, text or email about this request.</label>
+    <div class="hp" aria-hidden="true"><label for="f-company">Company</label><input id="f-company" name="company" tabindex="-1" autocomplete="off"></div>
+    <input type="hidden" name="elapsed" value="">
+    <div class="form-status" role="status" aria-live="polite" tabindex="-1"></div>
+    <div class="full form-foot">
+      <button class="btn" type="submit">Send request</button>
+      <p class="form-note">We only use your details to arrange this appointment.</p>
+    </div>
+  </form>
+
+  <aside class="contact-info">
+    <h2>Call or visit</h2>
+    <p class="big"><a href="tel:+442000000000">020 0000 0000</a></p>
+    <p><a class="link" href="mailto:hello@brightsmile-dental.example">hello@brightsmile-dental.example</a></p>
+    <p class="open-now" data-open-now></p>
+    <h3>Address</h3>
+    <p>18 Upper Street, London N1 0PQ</p>
+    <p class="muted">Angel station (Northern line) is 4 minutes on foot. Buses 4, 19, 30, 38, 43, 56, 73 and 341 stop outside. No private parking: Islington Green car park is 3 minutes away.</p>
+    <h3>Opening hours</h3>
+    <dl class="hours">
+      <dt data-days="1 2 3 4 5">Monday to Friday</dt><dd>8:00 to 19:00</dd>
+      <dt data-days="6">Saturday</dt><dd>9:00 to 15:00</dd>
+      <dt data-days="0">Sunday</dt><dd>Closed</dd>
+    </dl>
+    <h3>Prefer to chat?</h3>
+    <p class="muted">Our AI receptionist can answer questions and request the appointment for you, any time.</p>
+    <button class="btn btn-ghost btn-ai" type="button" data-ask="I'd like to book an appointment">Book in the chat</button>
+  </aside>
+</div></div>
+
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Dentist", "name": "BrightSmile Dental", "url": "__ORIGIN__/",
+ "telephone": "+44 20 0000 0000", "email": "hello@brightsmile-dental.example",
+ "address": {"@type": "PostalAddress", "streetAddress": "18 Upper Street", "addressLocality": "London", "postalCode": "N1 0PQ", "addressCountry": "GB"},
+ "openingHoursSpecification": [
+  {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "19:00"},
+  {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "15:00"}]}
+</script>

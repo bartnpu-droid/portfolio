@@ -1,0 +1,4 @@
+aiohttp>=3.9
+openpyxl>=3.1
+dnspython>=2.6
+certifi>=2024.2

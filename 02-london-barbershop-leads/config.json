@@ -1,0 +1,22 @@
+{
+  "title": "Independent barbershops — Greater London",
+  "area_name": "Greater London",
+  "country_code": "44",
+  "osm_filters": [
+    "[\"shop\"=\"hairdresser\"][\"hairdresser\"~\"barber|men|male\",i]",
+    "[\"shop\"=\"barber\"]",
+    "[\"shop\"=\"hairdresser\"][\"name\"~\"barber\",i]"
+  ],
+  "exclude_chains": [
+    "toni & guy", "toni&guy", "rush hair", "headmasters", "supercuts", "regis", "saks",
+    "ruffians", "murdock", "pall mall barbers", "sharps barber", "ted's grooming room",
+    "gentlemen's tonic", "hob salons", "francesco group", "tommy guns", "barberella",
+    "the barber shop by", "turkish barber line"
+  ],
+  "crawl_websites": true,
+  "concurrency": 10,
+  "timeout_sec": 12,
+  "max_places": 2000,
+  "output_dir": "output",
+  "file_name": "london_independent_barbershops"
+}

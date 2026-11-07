@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat bubble demo</title>
+<style>
+  :root{--bg:#f6f4f0;--ink:#1d1d1f;--muted:#6b6b70}
+  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:64px 24px 160px}
+  h1{font-size:40px;line-height:1.1;margin:0 0 16px}
+  p{color:var(--muted)}
+  code{background:#fff;border:1px solid #e3e0da;border-radius:8px;padding:2px 6px;font-size:14px}
+</style>
+</head>
+<body>
+<main>
+  <h1>Any website, one line of code</h1>
+  <p>This page stands in for a client's existing site (WordPress, Wix, Webflow, Shopify…). The chat bubble in the
+  bottom-right corner is added with a single script tag:</p>
+  <p><code>&lt;script src="https://your-server/static/widget.js" data-title="BrightSmile Dental" defer&gt;&lt;/script&gt;</code></p>
+  <p>Click the bubble to open the assistant.</p>
+</main>
+<script src="/static/widget.js" data-title="BrightSmile Dental" defer></script>
+</body>
+</html>

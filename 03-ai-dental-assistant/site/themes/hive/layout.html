@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+{{robots}}
+<link rel="canonical" href="__ORIGIN__{{path}}">
+<meta name="theme-color" content="#efe5d1">
+<link rel="icon" href="/static/img/hive/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/static/img/hive/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BrightSmile Dental">
+<meta property="og:title" content="{{og_title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="__ORIGIN__{{path}}">
+<meta property="og:image" content="__ORIGIN__/static/img/hive/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/static/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/static/fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/static/css/hive.css">
+{{head}}
+</head>
+<body class="page-{{slug}}">
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">
+  <div class="wrap topbar-row">
+    <p class="open-now" data-open-now></p>
+    <p class="tb-addr">18 Upper Street, Islington · 4 minutes from Angel</p>
+    <a class="tb-tel" href="tel:+442000000000">020 0000 0000</a>
+  </div>
+</div>
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="logo" href="/">{{logo}}<span class="wm"><b>BrightSmile</b><small>Dental · Islington</small></span></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      {{nav}}
+      <a class="nav-tel" href="tel:+442000000000">Call 020 0000 0000</a>
+    </nav>
+    <div class="head-cta">
+      <a class="tel" href="tel:+442000000000">020 0000 0000</a>
+      <a class="btn" href="/contact#book">Book a visit</a>
+    </div>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<main id="main">
+{{content}}
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <p>The calm corner of <em>Upper Street.</em></p>
+      <div class="btn-row">
+        <a class="btn" href="/contact#book">Book a visit</a>
+        <button class="btn btn-ghost btn-ai" type="button" data-ask="">Ask a question</button>
+      </div>
+    </div>
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="/">{{logo}}<span class="wm"><b>BrightSmile</b><small>Dental · Islington</small></span></a>
+        <p>Private family dentist in Islington.</p>
+        <p><a href="tel:+442000000000">020 0000 0000</a><br><a href="mailto:hello@brightsmile-dental.example">hello@brightsmile-dental.example</a></p>
+      </div>
+      <div>
+        <h2 class="foot-h">Visit</h2>
+        <p>18 Upper Street<br>London N1 0PQ</p>
+        <p>Monday to Friday 8:00 to 19:00<br>Saturday 9:00 to 15:00<br>Sunday closed</p>
+      </div>
+      <div>
+        <h2 class="foot-h">Treatments</h2>
+        <ul>
+          <li><a href="/treatments#checkups">Check-ups and hygiene</a></li>
+          <li><a href="/treatments#emergency">Emergency appointments</a></li>
+          <li><a href="/treatments#cosmetic">Whitening and veneers</a></li>
+          <li><a href="/treatments#aligners">Clear aligners</a></li>
+          <li><a href="/implants">Dental implants</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="foot-h">Patients</h2>
+        <ul>
+          <li><a href="/patients#new">New patients</a></li>
+          <li><a href="/patients#paying">Finance and insurance</a></li>
+          <li><a href="/patients#emergencies">Emergencies</a></li>
+          <li><a href="/patients#faq">Questions</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot-note">Demo website. BrightSmile Dental is a fictional clinic: names, prices and phone numbers are made up. In a medical emergency call 999.</p>
+  </div>
+</footer>
+<script src="/static/vendor/lenis.min.js" defer></script>
+<script src="/static/js/site.js" defer></script>
+<script src="/static/widget.js" data-title="BrightSmile Dental" data-accent="#2b211b"{{widget}} defer></script>
+{{scripts}}
+</body>
+</html>

@@ -1,0 +1,17 @@
+# secrets and local runtime data
+.env
+**/data/*
+!**/data/.keep
+
+# local tools and caches
+.venv/
+**/bin/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# the full lead list with contacts stays private; only the masked sample is shared
+02-london-barbershop-leads/output/*
+!02-london-barbershop-leads/output/.keep
+!02-london-barbershop-leads/output/*_sample_masked.xlsx

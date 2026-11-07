@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat widget demo: BrightSmile Dental</title>
+<meta name="description" content="Demo website of a fictional dental clinic with an AI receptionist.">
+<style>
+@font-face{font-family:"Bricolage Grotesque";src:url("static/fonts/bricolage-grotesque-latin-600-normal.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url("static/fonts/bricolage-grotesque-latin-800-normal.woff2") format("woff2");font-weight:800;font-display:swap}
+@font-face{font-family:"Figtree";src:url("static/fonts/figtree-latin-400-normal.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Figtree";src:url("static/fonts/figtree-latin-500-normal.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Figtree";src:url("static/fonts/figtree-latin-600-normal.woff2") format("woff2");font-weight:600;font-display:swap}
+:root{--bg:#f3f6f4;--paper:#fff;--ink:#132a2e;--muted:#5c6f71;--line:#dfe6e3;--accent:#2e7d64;--accent-ink:#f2faf6;--lilac:#e9e4f6}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:17px/1.55 "Figtree",system-ui,sans-serif}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}
+.logo{font:800 24px/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.logo span{width:30px;height:30px;border-radius:9px;background:var(--accent);display:inline-block;position:relative}
+.logo span:after{content:"";position:absolute;inset:8px 9px 7px;border-radius:6px 6px 9px 9px;background:#fff}
+nav .call{font-weight:600;text-decoration:none;border:1.5px solid var(--ink);border-radius:999px;padding:9px 16px;font-size:15px}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:36px 0 72px}
+h1{font:800 clamp(42px,5.6vw,74px)/.98 "Bricolage Grotesque",sans-serif;letter-spacing:-.025em;margin:0 0 22px}
+.lead{font-size:20px;color:var(--muted);max-width:30em;margin:0 0 28px}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.facts li{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:15px}
+#chat{height:600px}
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font:800 38px/1.05 "Bricolage Grotesque",sans-serif;letter-spacing:-.02em;margin:0 0 8px}
+.sub{color:var(--muted);margin:0 0 30px}
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:0;background:var(--paper);border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.price{padding:22px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.price:nth-child(3n){border-right:0}
+.price:nth-last-child(-n+3){border-bottom:0}
+.price b{display:block;font-weight:600}
+.price span{color:var(--muted);font-size:15px}
+.price em{font:600 30px/1 "Bricolage Grotesque",sans-serif;font-style:normal;display:block;margin-top:12px;color:var(--accent)}
+.visit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:24px}
+.card h3{font:600 20px/1.2 "Bricolage Grotesque",sans-serif;margin:0 0 12px}
+.card p,.card dl{margin:0;color:var(--muted)}
+dl{display:grid;grid-template-columns:auto 1fr;gap:4px 16px}
+dt{color:var(--ink)}
+.team{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.person{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:20px}
+.ini{width:54px;height:54px;border-radius:50%;background:var(--lilac);display:grid;place-items:center;font:600 18px/1 "Bricolage Grotesque",sans-serif;margin-bottom:14px}
+.person b{display:block}.person span{color:var(--muted);font-size:14px}
+footer{padding:36px 0 120px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.embed{background:var(--ink);color:#d9e6e2;border-radius:16px;padding:18px 20px;font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;overflow-x:auto;margin-top:14px}
+@media (max-width:900px){.hero{grid-template-columns:1fr}.prices{grid-template-columns:1fr 1fr}.price:nth-child(3n){border-right:1px solid var(--line)}.price:nth-child(2n){border-right:0}.price:nth-last-child(-n+3){border-bottom:1px solid var(--line)}.price:nth-last-child(-n+2){border-bottom:0}.visit{grid-template-columns:1fr}.team{grid-template-columns:1fr 1fr}#chat{height:540px}}
+@media (max-width:520px){.wrap{padding:0 16px}.prices{grid-template-columns:1fr}.price{border-right:0!important;border-bottom:1px solid var(--line)!important}.price:last-child{border-bottom:0!important}.team{grid-template-columns:1fr}nav .call{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav><div class="logo"><span aria-hidden="true"></span>BrightSmile Dental</div><a class="call" href="tel:02000000000">020 0000 0000</a></nav>
+
+  <header class="hero">
+    <div>
+      <h1>Questions about your teeth at 2&nbsp;am? Ask us.</h1>
+      <p class="lead">Our virtual receptionist knows our prices, opening hours and treatments, and can request an appointment for you any time. A real person from our team calls back to confirm.</p>
+      <ul class="facts">
+        <li>Private family dentist in Islington</li><li>4 min from Angel</li><li>Open Saturdays</li><li>Nervous patients welcome</li>
+      </ul>
+    </div>
+    <div id="chat"></div>
+  </header>
+
+  <section>
+    <h2>Popular treatments</h2>
+    <p class="sub">You always get a written plan with the full cost before treatment starts.</p>
+    <div class="prices">
+      <div class="price"><b>New patient exam</b><span>Includes 2 X-rays · 40 min</span><em>£75</em></div>
+      <div class="price"><b>Hygiene appointment</b><span>Scale and polish · 40 min</span><em>£85</em></div>
+      <div class="price"><b>Emergency appointment</b><span>Same day where possible</span><em>£95</em></div>
+      <div class="price"><b>White filling</b><span>Depending on size</span><em>£140–240</em></div>
+      <div class="price"><b>Teeth whitening</b><span>Home kit with custom trays</span><em>£350</em></div>
+      <div class="price"><b>Clear aligners</b><span>Free consultation</span><em>from £2,500</em></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Visit us</h2>
+    <p class="sub">Step-free access and an accessible toilet.</p>
+    <div class="visit">
+      <div class="card"><h3>Opening hours</h3><dl><dt>Mon–Fri</dt><dd>8:00–19:00</dd><dt>Saturday</dt><dd>9:00–15:00</dd><dt>Sunday</dt><dd>Closed</dd></dl></div>
+      <div class="card"><h3>Address</h3><p>18 Upper Street<br>London N1 0PQ<br>Angel station, 4 minutes on foot</p></div>
+      <div class="card"><h3>Emergencies</h3><p>Call 020 0000 0000 during opening hours. Registered patients out of hours: 07000 000000. Otherwise NHS 111.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Our team</h2>
+    <p class="sub">Between us we speak English, Hindi, Urdu, Polish and Ukrainian.</p>
+    <div class="team">
+      <div class="person"><div class="ini">SK</div><b>Dr Sarah Khan</b><span>Principal dentist</span></div>
+      <div class="person"><div class="ini">TE</div><b>Dr Tom Ellis</b><span>Implants &amp; oral surgery</span></div>
+      <div class="person"><div class="ini">PN</div><b>Dr Priya Nair</b><span>Children &amp; nervous patients</span></div>
+      <div class="person"><div class="ini">EC</div><b>Emma Clarke</b><span>Dental hygienist</span></div>
+      <div class="person"><div class="ini">LG</div><b>Lucy Grant</b><span>Clear aligners</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Demo website. BrightSmile Dental is a fictional clinic; names, prices and contacts are made up.<br>
+    The AI receptionist can be added to any website with one line:</p>
+    <div class="embed">&lt;script src="https://your-server/static/widget.js" data-title="Your Clinic" defer&gt;&lt;/script&gt;</div>
+  </footer>
+</div>
+<script src="static/widget.js" data-title="BrightSmile Dental" data-target="#chat" data-launcher="none" defer></script>
+</body>
+</html>

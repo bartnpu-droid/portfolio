@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TACET One · Wireless noise-cancelling headphones</title>
+<meta name="description" content="TACET One: over-ear headphones with adaptive noise cancelling, 40 hours of battery and a 248 g aluminium frame. A concept product page.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b0c0e">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<meta property="og:title" content="TACET One · Silence, engineered.">
+<meta property="og:description" content="Over-ear headphones with adaptive noise cancelling. A concept product page.">
+<meta property="og:image" content="img/og.jpg">
+<link rel="preload" href="fonts/inter-tight-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">{"imports": {"three": "./vendor/three.module.min.js"}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="head">
+  <div class="wrap head-row">
+    <a class="logo" href="#top" aria-label="TACET, back to top">
+      <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="8" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="9.5" y="8" width="2.6" height="12" rx="1.3" fill="currentColor"/><rect x="15.9" y="8" width="2.6" height="12" rx="1.3" fill="currentColor"/></svg>
+      <span>TACET</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#silence">Silence</a>
+      <a href="#layers">Design</a>
+      <a href="#materials">Materials</a>
+      <a href="#specs">Specs</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-sm" href="#preorder">Pre-order <span class="price">€349</span></a>
+  </div>
+</header>
+
+<main id="main">
+  <!-- 1. hero -->
+  <section class="hero" id="top">
+    <div class="hero-light" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="label">TACET One · Wireless ANC headphones</p>
+        <h1><span>Silence,</span> <span>engineered.</span></h1>
+        <p class="lead">Over-ear headphones that take the city down to a whisper. Adaptive noise cancelling, 40 hours of battery and a frame that weighs 248&nbsp;grams.</p>
+        <div class="btn-row">
+          <a class="btn" href="#preorder">Pre-order · €349</a>
+          <a class="btn btn-ghost" href="#silence">Hear the difference</a>
+        </div>
+        <fieldset class="colors" aria-label="Colour">
+          <legend class="label">Colour · <span data-color-name>Bone</span></legend>
+          <label class="swatch" style="--c:#e6e0d5"><input type="radio" name="color" value="bone" checked><span>Bone</span></label>
+          <label class="swatch" style="--c:#1b1c1f"><input type="radio" name="color" value="obsidian"><span>Obsidian</span></label>
+          <label class="swatch" style="--c:#45503f"><input type="radio" name="color" value="moss"><span>Moss</span></label>
+        </fieldset>
+      </div>
+      <figure class="hero-stage" aria-label="TACET One headphones in 3D. Move the cursor to turn them.">
+        <canvas data-scene="hero"></canvas>
+        <div class="floor" aria-hidden="true"></div>
+        <figcaption class="hint">Move the cursor to turn them</figcaption>
+      </figure>
+    </div>
+    <ul class="wrap stats">
+      <li><b>−42 dB</b><span>adaptive noise cancelling</span></li>
+      <li><b>40 h</b><span>battery with ANC on</span></li>
+      <li><b>5 min</b><span>of charging for 4 hours</span></li>
+      <li><b>248 g</b><span>aluminium frame</span></li>
+    </ul>
+  </section>
+
+  <!-- 2. noise cancelling demo -->
+  <section class="silence" id="silence">
+    <div class="wrap silence-grid">
+      <div>
+        <p class="label">Adaptive noise cancelling</p>
+        <h2>Turn the world down.</h2>
+        <p class="lead">Eight microphones listen 48,000 times a second and cancel what you don't want to hear: traffic, engines, the open-plan office. Your music stays exactly as it was mixed.</p>
+        <div class="modes" role="radiogroup" aria-label="Noise cancelling mode">
+          <button type="button" role="radio" aria-checked="false" data-mode="off">Off</button>
+          <button type="button" role="radio" aria-checked="false" data-mode="aware">Aware</button>
+          <button type="button" role="radio" aria-checked="true" data-mode="silence">Silence</button>
+        </div>
+        <p class="meter"><span class="label">Noise you hear</span><b data-meter>36 dB</b><span class="meter-note" data-meter-note>like a quiet library</span></p>
+      </div>
+      <div class="waves-box">
+        <canvas data-waves aria-hidden="true"></canvas>
+        <div class="waves-labels" aria-hidden="true"><span>Outside</span><span>What you hear</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. exploded ear cup -->
+  <section class="layers" id="layers" data-explode>
+    <div class="wrap layers-grid">
+      <div class="layers-copy">
+        <p class="label">Inside the ear cup</p>
+        <h2>Built in layers.</h2>
+        <p class="lead">Five parts, each doing one job well. Nothing glued that could be screwed, so every layer can be replaced.</p>
+        <ol class="parts">
+          <li><b>Aluminium cap</b><span>Bead-blasted and anodised, 0.8&nbsp;mm thin. It is also the touch control.</span></li>
+          <li><b>Acoustic shell</b><span>Glass-filled nylon with a tuned rear chamber, so the bass stays tight.</span></li>
+          <li><b>40 mm driver</b><span>A beryllium-coated dome for detail without harshness.</span></li>
+          <li><b>Baffle and microphones</b><span>Four of the eight noise-cancelling microphones sit right here, next to your ear.</span></li>
+          <li><b>Memory-foam cushion</b><span>Protein leather over slow-recovery foam. It clicks off by magnet.</span></li>
+        </ol>
+      </div>
+      <figure class="layers-stage">
+        <canvas data-scene="explode"></canvas>
+        <ol class="tags" aria-hidden="true">
+          <li data-part="cap">01</li><li data-part="shell">02</li><li data-part="driver">03</li><li data-part="baffle">04</li><li data-part="cushion">05</li>
+        </ol>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 4. materials -->
+  <section class="materials light" id="materials">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Materials</p>
+        <h2>Made to be held.</h2>
+        <p class="lead">Three materials, chosen for how they feel after a ten-hour flight, not how they look in a photo.</p>
+      </div>
+      <div class="mats">
+        <article class="mat">
+          <div class="mat-swatch alu" aria-hidden="true"></div>
+          <h3>Aluminium</h3>
+          <p>One piece of 6063 aluminium for each yoke. Cold to the touch for a second, then it simply disappears.</p>
+        </article>
+        <article class="mat">
+          <div class="mat-swatch leather" aria-hidden="true"></div>
+          <h3>Protein leather</h3>
+          <p>Soft, breathable and wipe-clean. The cushions replace in seconds, so the headphones outlive them.</p>
+        </article>
+        <article class="mat">
+          <div class="mat-swatch foam" aria-hidden="true"></div>
+          <h3>Memory foam</h3>
+          <p>Slow-recovery foam spreads the pressure across the whole ear cup instead of three points.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. specs -->
+  <section class="specs" id="specs">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Specifications</p>
+        <h2>The numbers.</h2>
+      </div>
+      <dl class="spec-list">
+        <div><dt>Driver</dt><dd>40 mm, beryllium-coated dome</dd></div>
+        <div><dt>Frequency response</dt><dd>4 Hz – 40 kHz</dd></div>
+        <div><dt>Noise cancelling</dt><dd>Adaptive, 8 microphones, up to −42 dB</dd></div>
+        <div><dt>Battery</dt><dd>40 h with ANC, 60 h without</dd></div>
+        <div><dt>Charging</dt><dd>USB-C, 5 minutes for 4 hours</dd></div>
+        <div><dt>Connection</dt><dd>Bluetooth 5.4, LE Audio, two devices at once</dd></div>
+        <div><dt>Codecs</dt><dd>AAC, LDAC, LC3</dd></div>
+        <div><dt>Weight</dt><dd>248 g</dd></div>
+        <div><dt>In the box</dt><dd>Hard case, USB-C cable, 3.5 mm cable, flight adapter</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 6. pre-order -->
+  <section class="preorder" id="preorder">
+    <div class="preorder-glow" aria-hidden="true"></div>
+    <div class="wrap preorder-grid">
+      <div>
+        <p class="label">Pre-order</p>
+        <h2>Reserve your pair.</h2>
+        <p class="lead">First deliveries in spring 2027. Join the list and we will email you once, when your colour is ready to order.</p>
+        <ul class="perks">
+          <li>Free delivery across the EU</li>
+          <li>30-day returns</li>
+          <li>2-year warranty, replaceable cushions and battery</li>
+        </ul>
+      </div>
+      <form class="waitlist" novalidate>
+        <p class="price-big">€349</p>
+        <label for="email">Email</label>
+        <div class="field-row">
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          <button class="btn" type="submit">Join the list</button>
+        </div>
+        <p class="form-note" role="status" aria-live="polite">One email when your colour is ready. Nothing else.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- 7. questions -->
+  <section class="faq" id="faq">
+    <div class="wrap faq-grid">
+      <div>
+        <p class="label">Questions</p>
+        <h2>Good to know.</h2>
+      </div>
+      <div class="qa">
+        <details><summary>Do they fold for travel?</summary><p>Yes. The ear cups turn flat and fold in, and the hard case is 4 cm thick.</p></details>
+        <details><summary>Can I replace the battery?</summary><p>Yes. It sits behind the right cushion, held by two screws. A new one costs €29.</p></details>
+        <details><summary>Will they work with my phone and laptop at the same time?</summary><p>Yes, they stay connected to two devices and switch to whichever one starts playing.</p></details>
+        <details><summary>Can I use them with a cable?</summary><p>Yes, the 3.5 mm cable is in the box, and it works even when the battery is empty.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <a class="logo" href="#top" aria-label="TACET, back to top">
+      <svg viewBox="0 0 28 28" aria-hidden="true"><rect x="1" y="1" width="26" height="26" rx="8" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="9.5" y="8" width="2.6" height="12" rx="1.3" fill="currentColor"/><rect x="15.9" y="8" width="2.6" height="12" rx="1.3" fill="currentColor"/></svg>
+      <span>TACET</span>
+    </a>
+    <p>Concept product page. TACET is a fictional brand: the product, prices and specifications are illustrative.</p>
+  </div>
+</footer>
+
+<script src="vendor/lenis.min.js" defer></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

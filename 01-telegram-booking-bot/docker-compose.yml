@@ -1,0 +1,11 @@
+services:
+  bot:
+    build: .
+    env_file: .env
+    environment:
+      DB_PATH: /app/data/barber.db
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
