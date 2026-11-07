@@ -257,9 +257,16 @@ def _best_handle(handles: list[str], name: str) -> str:
     return best
 
 
+# accounts of website builders and booking platforms: page templates and booking widgets link to these
+PLATFORM_HANDLES = {"squarespace", "wix", "wixcom", "shopify", "godaddy", "wordpress", "wordpressdotcom", "weebly",
+                    "webflow", "fresha", "booksy", "booksyuk", "treatwell", "treatwelluk", "setmore", "setmoreappts",
+                    "square", "squareup", "timely", "timelyapp", "vagaro", "squire", "getsquire", "simplybook",
+                    "simplybookme", "mindbody", "phorest"}
+
+
 def extract_socials(html: str, name: str = "") -> tuple[str, str]:
     bad = {"sharer", "share", "p", "reel", "reels", "explore", "tr", "plugins", "dialog", "2008", "profile.php",
-           "profile", "watch", "events", "groups", "pages", "people", "hashtag", "accounts", "stories"}
+           "profile", "watch", "events", "groups", "pages", "people", "hashtag", "accounts", "stories"} | PLATFORM_HANDLES
     igs = [h for h in dict.fromkeys(re.findall(r"https?://(?:www\.)?instagram\.com/([A-Za-z0-9_.]+)/?", html))
            if h.lower() not in bad]
     fbs = [h for h in dict.fromkeys(re.findall(r"https?://(?:www\.)?facebook\.com/([A-Za-z0-9_.\-]+)/?", html))

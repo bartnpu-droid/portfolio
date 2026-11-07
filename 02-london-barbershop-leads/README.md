@@ -5,6 +5,10 @@ contact e-mails, social profiles and the online booking system each business use
 
 Demo run: **independent barbershops in Greater London**.
 
+![Overview of the London run](screenshots/overview.jpg)
+
+![The Excel report (masked sample)](screenshots/leads-sheet.jpg)
+
 ## What it does
 
 1. **Collects** businesses from OpenStreetMap (Overpass API) for any area and category.

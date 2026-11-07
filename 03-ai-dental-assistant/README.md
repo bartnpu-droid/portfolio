@@ -6,6 +6,9 @@ patients' questions from the clinic's own information and collects appointment r
 
 > Demo project. "BrightSmile Dental" is a fictional clinic; names, prices and contacts are made up.
 
+Demo video: [`ai-dental-receptionist-demo.mp4`](ai-dental-receptionist-demo.mp4) (34 s: the 3D implant, the scroll story
+and a real answer from the AI receptionist). Live: https://dental-clinic-production-b8f4.up.railway.app
+
 ![Home page](screenshots/site-home.jpg)
 
 | Scroll takes the implant apart | Treatments and fees |

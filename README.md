@@ -14,7 +14,7 @@ Demo barbershop "Northside Barber Co." (fictional).
 - Admin panel: schedule, 7-day stats, services, barbers, days off, broadcast, Google Sheets export
 - Python, aiogram 3, aiohttp, SQLite, Docker, automated tests
 Run: `bash start.command` inside the folder.
-Screens: `01-telegram-booking-bot/screenshots/`
+Screens: `01-telegram-booking-bot/screenshots/`, demo video: `01-telegram-booking-bot/barbershop-bot-demo.mp4`
 
 ## 02 — Lead generation: independent barbershops in London
 Folder: `02-london-barbershop-leads`
@@ -24,6 +24,7 @@ Folder: `02-london-barbershop-leads`
 - Excel report: Leads, With contacts, Summary, Excluded chains + CSV
 - Share only `output/*_sample_masked.xlsx` (contacts masked)
 Run: `bash run.command` inside the folder.
+Screens: `02-london-barbershop-leads/screenshots/`
 Data © OpenStreetMap contributors (ODbL) + business websites.
 
 ## 03 — Dental clinic website with 3D + AI receptionist
@@ -35,7 +36,7 @@ Folder: `03-ai-dental-assistant`
 - Appointment / callback requests (from the AI or the booking form) → Telegram notification for staff, admin stats, CSV export
 - Safety rules for medical topics, spam and budget limits, SEO, accessibility, mobile layout
 Run: `bash start.command` inside the folder (add the API key to `.env` first), then open the address it prints
-Screens: `03-ai-dental-assistant/screenshots/`
+Screens: `03-ai-dental-assistant/screenshots/`, demo video: `03-ai-dental-assistant/ai-dental-receptionist-demo.mp4`
 
 ## 04 — 3D product landing page
 Folder: `04-3d-product-landing`

@@ -6,6 +6,9 @@ shop from an **admin panel** right in the chat.
 
 > Demo project. The shop "Northside Barber Co.", its barbers and prices are fictional.
 
+Demo video: [`barbershop-bot-demo.mp4`](barbershop-bot-demo.mp4) (22 s, a booking made in the Mini App).
+Try it live: https://t.me/NorthsideBarberDemoBot
+
 ## Features
 
 **For clients**

@@ -119,3 +119,11 @@ def test_socials_skip_theme_links_and_fbml():
     assert lg.extract_socials(html, "7Cut Barbers")[1] == ""
     assert lg.extract_socials(html, "Seven Cut Barbers")[0] == "https://instagram.com/sevencut_barbers"
     assert lg.extract_emails("info@yoursite.com hello@real.co.uk") == ["hello@real.co.uk"]
+
+
+def test_socials_skip_platform_accounts():
+    html = ('<footer><a href="https://www.instagram.com/squarespace/">Made with Squarespace</a>'
+            '<a href="https://www.facebook.com/people/Choppers-Barbers/100063526880281/">fb</a></footer>')
+    assert lg.extract_socials(html, "East Central Barbering") == ("", "")
+    html += '<a href="https://instagram.com/eastcentralbarbering">ig</a>'
+    assert lg.extract_socials(html, "East Central Barbering")[0] == "https://instagram.com/eastcentralbarbering"
