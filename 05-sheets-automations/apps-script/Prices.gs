@@ -35,6 +35,7 @@ function setupPrices_() {
   prod.getRange(2, 3, Math.max(prod.getLastRow() - 1, 1), 1).insertCheckboxes();
   prod.setColumnWidth(1, 520);
   prod.setColumnWidth(2, 120);
+  prod.getRange('B2:B').setNumberFormat('£0.00');
 
   const latest = sheetOr_(ss, 'Latest', PRICES.LATEST);
   latest.setColumnWidth(1, 300);
@@ -44,7 +45,10 @@ function setupPrices_() {
   latest.setColumnWidth(9, 140);
 
   const hist = sheetOr_(ss, 'History', PRICES.HISTORY);
+  hist.setColumnWidth(1, 150);
   hist.setColumnWidth(2, 300);
+  hist.setColumnWidth(4, 170);
+  hist.setColumnWidth(5, 420);
   hist.getRange('A2:A').setNumberFormat('dd mmm yyyy, hh:mm');
   hist.getRange('C2:C').setNumberFormat('£0.00');
 
