@@ -55,3 +55,5 @@ Folder: `05-sheets-automations`
 - Daily price monitor: product pages → Google Sheet with history, % change, lowest price, trend charts → Telegram alerts
 - Google Apps Script, no server and no monthly fees; offline tests: `node 05-sheets-automations/tests/run.js`
 Landing page with the form: `docs/lead-form/index.html`
+Live demo: https://bartnpu-droid.github.io/portfolio/lead-form/ (alerts: https://t.me/s/upworkdemoalerts)
+Screens: `05-sheets-automations/screenshots/`

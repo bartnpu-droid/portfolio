@@ -31,6 +31,14 @@ Demo store: [books.toscrape.com](https://books.toscrape.com), a public sandbox m
 - Prices on the demo store never change. To show the alerts in the demo, two saved prices were edited by hand before one check (one up, one down) and an "alert below" price was set for one book.
 - For sites that need a real browser (JavaScript, logins) I use Python with Playwright instead.
 
+## Screenshots
+
+![Form → Google Sheet → Telegram](screenshots/cover-leads.jpg)
+
+![Daily price monitor](screenshots/cover-prices.jpg)
+
+More in [`screenshots/`](screenshots/): the form page, the lead sheet, the Telegram channel and all three tabs of the price sheet.
+
 ## Files
 
 - `apps-script/Common.gs`: setup, daily triggers, Telegram sending, helpers
