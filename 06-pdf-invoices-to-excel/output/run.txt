@@ -1,0 +1,9 @@
+!!  atlas-ATL-77812.pdf          ATLAS COURIER INC.           ATL-77812     USD   1,134.00   3 lines  text
+      -> subtotal + tax = $1,098.00, but total says $1,134.00
+OK  bluepeak-BP-58213.pdf        Bluepeak Hosting B.V.        BP-58213      EUR     105.27   3 lines  text
+OK  greenleaf-GL-26-1093.pdf     Green Leaf Catering          GL/26/1093    GBP   1,110.96  18 lines  text
+OK  harbor-scan-HP-3391.pdf      Harbor Print Co.             HP-3391       GBP     301.20   3 lines  OCR
+OK  northwind-NW-2026-0417.pdf   Northwind Office Supply Ltd  NW-2026-0417  GBP     224.76   3 lines  text
+
+5 invoices, 30 lines -> output/invoices.xlsx
+1 need a check

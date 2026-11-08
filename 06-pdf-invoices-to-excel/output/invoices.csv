@@ -1,0 +1,6 @@
+file,supplier,invoice_no,invoice_date,due_date,currency,subtotal,tax,total,lines,read_from,check
+atlas-ATL-77812.pdf,ATLAS COURIER INC.,ATL-77812,2026-11-03,2026-12-03,USD,1008.50,89.50,1134.00,3,text,"Check: subtotal + tax = $1,098.00, but total says $1,134.00"
+bluepeak-BP-58213.pdf,Bluepeak Hosting B.V.,BP-58213,2026-11-01,2026-11-15,EUR,87.00,18.27,105.27,3,text,OK
+greenleaf-GL-26-1093.pdf,Green Leaf Catering,GL/26/1093,2026-10-28,2026-11-27,GBP,925.80,185.16,1110.96,18,text,OK
+harbor-scan-HP-3391.pdf,Harbor Print Co.,HP-3391,2026-11-05,2026-11-19,GBP,251.00,50.20,301.20,3,OCR,OK
+northwind-NW-2026-0417.pdf,Northwind Office Supply Ltd,NW-2026-0417,2026-11-02,2026-11-16,GBP,187.30,37.46,224.76,3,text,OK

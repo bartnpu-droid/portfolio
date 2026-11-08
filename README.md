@@ -57,3 +57,10 @@ Folder: `05-sheets-automations`
 Landing page with the form: `docs/lead-form/index.html`
 Live demo: https://bartnpu-droid.github.io/portfolio/lead-form/ (alerts: https://t.me/s/upworkdemoalerts)
 Screens: `05-sheets-automations/screenshots/`
+
+## 06 — PDF invoices → Excel, checked automatically
+Folder: `06-pdf-invoices-to-excel`
+- Reads normal and scanned invoice PDFs (OCR with Tesseract): supplier, number, dates, currency, line items, subtotal, tax, total
+- UK, EU and US formats, multi-page invoices; quantity × price, line sums and totals are checked, problems are flagged
+- Output: Excel with Invoices / Line items / Summary tabs, plus CSV; 14 tests: `cd 06-pdf-invoices-to-excel && python -m pytest`
+Screens: `06-pdf-invoices-to-excel/screenshots/`
