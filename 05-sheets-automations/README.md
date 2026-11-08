@@ -28,7 +28,7 @@ Demo store: [books.toscrape.com](https://books.toscrape.com), a public sandbox m
 - Every morning the script opens each page and reads the title, price and stock.
 - History tab keeps every check; Latest tab shows the current price, previous price, change in %, lowest price seen and a small trend chart per product.
 - Telegram alert when a price changes, drops below your target (once, not every morning), a product goes out of stock or a page stops opening.
-- Prices on the demo store never change, so to show an alert in the demo video one saved price was edited by hand before a check.
+- Prices on the demo store never change. To show the alerts in the demo, two saved prices were edited by hand before one check (one up, one down) and an "alert below" price was set for one book.
 - For sites that need a real browser (JavaScript, logins) I use Python with Playwright instead.
 
 ## Files
