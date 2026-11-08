@@ -253,6 +253,13 @@ test('second check alerts on a price drop and a target price; Latest keeps previ
   assert.strictEqual(book.getSheetByName('History').getLastRow(), 17);
 });
 
+test('same prices next day: no repeated target alert, nothing sent', () => {
+  env.sent.length = 0;
+  const r = C.checkPrices();
+  assert.deepStrictEqual(JSON.parse(JSON.stringify(r)), { checked: 8, alerts: 0 });
+  assert.strictEqual(env.sent.length, 0);
+});
+
 test('broken page and missing price are reported, others still saved', () => {
   const urls = env.books[env.props.PRICES_SHEET_ID].getSheetByName('Products').rowsOf(3).map((r) => r[0]);
   env.setFetchAll((reqs) => reqs.map((r, i) => (i === 0 ? res(503, '') : i === 1 ? res(200, '<html></html>') : res(200, page('Book ' + (i + 1), prices[r.url].toFixed(2))))));

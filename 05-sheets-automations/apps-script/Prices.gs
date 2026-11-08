@@ -102,7 +102,8 @@ function checkPrices() {
       alerts.push((info.price < p.price ? '📉 ' : '📈 ') + '<b>' + esc_(info.title) + '</b>: £' + p.price.toFixed(2) +
         ' → £' + info.price.toFixed(2) + ' (' + (change > 0 ? '+' : '') + (change * 100).toFixed(1) + '%)');
     }
-    if (alertBelow && info.price <= alertBelow) {
+    // Target alert only when the price crosses the target, so it does not repeat every morning
+    if (alertBelow && info.price <= alertBelow && (!had || p.price > alertBelow)) {
       alerts.push('🎯 <b>' + esc_(info.title) + '</b> is £' + info.price.toFixed(2) + ', below your £' + alertBelow.toFixed(2));
     }
     if (/out of stock/i.test(info.stock)) alerts.push('🚫 <b>' + esc_(info.title) + '</b> is out of stock');

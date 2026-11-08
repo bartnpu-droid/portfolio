@@ -2,6 +2,13 @@
 
 Two small automations built on Google's free tools (Google Sheets + Apps Script): no server and no monthly fees.
 
+## Live demo
+
+- Website form: https://bartnpu-droid.github.io/portfolio/lead-form/
+- Lead sheet (view only): https://docs.google.com/spreadsheets/d/1rsNpv_CeFH-Hbou-14sEqK-IBmug4VMMfRHzgb09o84/edit
+- Price sheet (view only): https://docs.google.com/spreadsheets/d/1q7NUyXsYmyisAkQrBKAvWpM6npL0EwBZ-blJBqbhWVk/edit
+- Telegram alerts of both demos: https://t.me/s/upworkdemoalerts (opens in the browser)
+
 ## 1. Website form → Google Sheet → Telegram alert
 
 Demo company: "Brightway Cleaning" (fictional). Landing page: `../docs/lead-form/index.html`.
@@ -20,7 +27,7 @@ Demo store: [books.toscrape.com](https://books.toscrape.com), a public sandbox m
 - Products tab: one product page URL per row, an optional "alert below" price and an Active checkbox.
 - Every morning the script opens each page and reads the title, price and stock.
 - History tab keeps every check; Latest tab shows the current price, previous price, change in %, lowest price seen and a small trend chart per product.
-- Telegram alert when a price changes, drops below your target, a product goes out of stock or a page stops opening.
+- Telegram alert when a price changes, drops below your target (once, not every morning), a product goes out of stock or a page stops opening.
 - Prices on the demo store never change, so to show an alert in the demo video one saved price was edited by hand before a check.
 - For sites that need a real browser (JavaScript, logins) I use Python with Playwright instead.
 
