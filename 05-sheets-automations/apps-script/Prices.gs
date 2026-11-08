@@ -39,6 +39,7 @@ function setupPrices_() {
   const latest = sheetOr_(ss, 'Latest', PRICES.LATEST);
   latest.setColumnWidth(1, 300);
   latest.setColumnWidths(2, 6, 110);
+  latest.setColumnWidth(6, 170);
   latest.setColumnWidth(8, 120);
   latest.setColumnWidth(9, 140);
 
