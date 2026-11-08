@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brightway Cleaning: get a free quote (demo)</title>
+<meta name="description" content="Demo: a website form that saves each request to a Google Sheet and sends an instant Telegram alert.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #0f5132;
+    --green-2: #146c43;
+    --mint: #d8f3e6;
+    --cream: #f7f5ef;
+    --ink: #17231d;
+    --muted: #5d6b63;
+    --line: #e3e7e1;
+    --card: #ffffff;
+    --error: #b3261e;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: var(--ink); background: var(--cream); line-height: 1.5; }
+  a { color: var(--green-2); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; }
+  .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; letter-spacing: -0.01em; color: var(--green); text-decoration: none; }
+  .logo-mark { width: 34px; height: 34px; border-radius: 10px; background: var(--green); display: grid; place-items: center; }
+  .demo-pill { font-size: 13px; color: var(--muted); border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 6px 12px; white-space: nowrap; }
+  .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: start; padding: 36px 0 56px; }
+  h1 { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; margin: 8px 0 18px; }
+  .lead { font-size: 18px; color: var(--muted); max-width: 520px; margin: 0 0 28px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+  .badge { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; font-size: 14px; font-weight: 500; }
+  .badge b { color: var(--green); }
+  .flow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
+  .flow span.step { background: var(--mint); color: var(--green); font-weight: 600; border-radius: 8px; padding: 6px 10px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px; box-shadow: 0 20px 50px -28px rgba(15, 81, 50, 0.35); }
+  .card h2 { margin: 0 0 4px; font-size: 22px; letter-spacing: -0.01em; }
+  .card p.sub { margin: 0 0 20px; color: var(--muted); font-size: 15px; }
+  label { display: block; font-size: 14px; font-weight: 600; margin: 14px 0 6px; }
+  label .opt { color: var(--muted); font-weight: 400; }
+  input, select, textarea { width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: #fbfcfa; border: 1px solid #cfd8d1; border-radius: 12px; padding: 12px 14px; outline: none; transition: border-color .15s, box-shadow .15s; }
+  input:focus, select:focus, textarea:focus { border-color: var(--green-2); box-shadow: 0 0 0 3px rgba(20, 108, 67, 0.15); }
+  textarea { min-height: 84px; resize: vertical; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  button { appearance: none; border: 0; cursor: pointer; font: inherit; font-weight: 600; font-size: 16px; border-radius: 12px; padding: 14px 18px; }
+  .primary { width: 100%; margin-top: 20px; background: var(--green); color: #fff; transition: background .15s, transform .05s; }
+  .primary:hover { background: var(--green-2); }
+  .primary:active { transform: translateY(1px); }
+  .primary[disabled] { opacity: .65; cursor: progress; }
+  .note { margin: 12px 0 0; font-size: 13px; color: var(--muted); text-align: center; }
+  .error { color: var(--error); font-size: 14px; margin: 12px 0 0; min-height: 20px; }
+  .done { display: none; text-align: center; padding: 8px 0; }
+  .done .tick { width: 64px; height: 64px; border-radius: 50%; background: var(--mint); display: grid; place-items: center; margin: 4px auto 14px; }
+  .done h2 { margin-bottom: 8px; }
+  .done p { color: var(--muted); margin: 0 0 20px; }
+  .links { display: grid; gap: 10px; }
+  .btn { display: block; text-decoration: none; text-align: center; font-weight: 600; border-radius: 12px; padding: 13px 16px; }
+  .btn.green { background: var(--green); color: #fff; }
+  .btn.ghost { border: 1px solid var(--line); color: var(--ink); background: #fff; }
+  .link-btn { background: none; color: var(--green-2); padding: 10px; font-size: 15px; }
+  section.how { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 56px 0; }
+  section h3 { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: 32px; letter-spacing: -0.01em; margin: 0 0 8px; }
+  section .intro { color: var(--muted); margin: 0 0 28px; max-width: 640px; }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .step-card { border: 1px solid var(--line); border-radius: 16px; padding: 22px; background: var(--cream); }
+  .step-card .n { width: 30px; height: 30px; border-radius: 9px; background: var(--green); color: #fff; font-weight: 700; display: grid; place-items: center; margin-bottom: 12px; }
+  .step-card h4 { margin: 0 0 6px; font-size: 17px; }
+  .step-card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .services { padding: 56px 0; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .svc { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+  .svc h4 { margin: 0 0 6px; font-size: 17px; }
+  .svc p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+  .svc .price { font-weight: 700; color: var(--green); }
+  footer { padding: 28px 0 40px; color: var(--muted); font-size: 14px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 28px; padding-top: 16px; }
+    .steps { grid-template-columns: 1fr; }
+    .grid4 { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .wrap { padding: 0 16px; }
+    .row { grid-template-columns: 1fr; gap: 0; }
+    .grid4 { grid-template-columns: 1fr; }
+    .demo-pill { display: none; }
+    .card { padding: 22px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="#">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg>
+      </span>
+      Brightway
+    </a>
+    <a class="demo-pill" href="#how">Demo: form → Google Sheet → Telegram</a>
+  </header>
+
+  <main class="hero">
+    <div>
+      <h1>Spotless homes,<br>booked in a minute.</h1>
+      <p class="lead">Regular, deep and end-of-tenancy cleaning in London. Leave a request and we call you back within 15 minutes.</p>
+      <div class="badges">
+        <div class="badge">Insured cleaners</div>
+        <div class="badge">Eco-friendly products</div>
+        <div class="badge">From <b>£18</b>/hour</div>
+      </div>
+      <div class="flow" aria-label="What happens after you send the form">
+        <span class="step">Form</span> → <span class="step">Google Sheet</span> → <span class="step">Telegram alert</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <form id="quote" novalidate>
+        <h2>Get a free quote</h2>
+        <p class="sub">Takes 30 seconds. No payment needed.</p>
+        <label for="name">Your name</label>
+        <input id="name" name="name" autocomplete="given-name" maxlength="60" required>
+        <label for="contact">Phone or email</label>
+        <input id="contact" name="contact" autocomplete="tel" maxlength="80" required>
+        <div class="row">
+          <div>
+            <label for="service">Service</label>
+            <select id="service" name="service">
+              <option>Regular cleaning</option>
+              <option>Deep cleaning</option>
+              <option>End of tenancy</option>
+              <option>Office cleaning</option>
+            </select>
+          </div>
+          <div>
+            <label for="date">Preferred date <span class="opt">(optional)</span></label>
+            <input id="date" name="date" type="date">
+          </div>
+        </div>
+        <label for="message">Anything we should know? <span class="opt">(optional)</span></label>
+        <textarea id="message" name="message" maxlength="500" placeholder="e.g. 2 bedrooms, a cat, parking outside"></textarea>
+        <div class="hp" aria-hidden="true"><label for="company_website">Company website</label><input id="company_website" name="company_website" tabindex="-1" autocomplete="off"></div>
+        <button class="primary" type="submit" id="send">Send request</button>
+        <p class="error" id="error" role="alert"></p>
+        <p class="note">This is a demo. Please don't enter real personal data.</p>
+      </form>
+
+      <div class="done" id="done" aria-live="polite">
+        <div class="tick" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0f5132" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h2 id="done-title">Request received</h2>
+        <p>It's already a new row in the Google Sheet, and the owner got a Telegram alert.</p>
+        <div class="links">
+          <a class="btn green" id="sheet-link" target="_blank" rel="noopener">Open the live Google Sheet</a>
+          <a class="btn ghost" id="tg-link" target="_blank" rel="noopener">See the alert in Telegram</a>
+          <button class="link-btn" type="button" id="again">Send another request</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<section class="how" id="how">
+  <div class="wrap">
+    <h3>How this demo works</h3>
+    <p class="intro">Brightway is a made-up company. The form is real: it shows a setup I build for small businesses. No server and no monthly fees, it runs on Google's free tools.</p>
+    <div class="steps">
+      <div class="step-card"><div class="n">1</div><h4>A visitor sends the form</h4><p>Simple checks catch typos and spam bots before anything is saved.</p></div>
+      <div class="step-card"><div class="n">2</div><h4>Google Sheet gets a new row</h4><p>Date, name, contact, service, status with colours. The team updates the status as they work.</p></div>
+      <div class="step-card"><div class="n">3</div><h4>The owner gets a Telegram alert</h4><p>Instantly, on the phone. Plus a morning summary: new requests and who still waits for a call.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="services">
+    <h3>Services</h3>
+    <p class="intro">Prices are examples for the demo.</p>
+    <div class="grid4">
+      <div class="svc"><h4>Regular cleaning</h4><p>Weekly or every two weeks, same cleaner.</p><div class="price">from £18/hour</div></div>
+      <div class="svc"><h4>Deep cleaning</h4><p>Kitchen, bathroom, inside appliances.</p><div class="price">from £120</div></div>
+      <div class="svc"><h4>End of tenancy</h4><p>Checklist that agents accept.</p><div class="price">from £180</div></div>
+      <div class="svc"><h4>Office cleaning</h4><p>Before or after working hours.</p><div class="price">on quote</div></div>
+    </div>
+  </section>
+  <footer>
+    <span>Brightway Cleaning is a fictional company. Demo built by Ihor S.</span>
+    <a href="https://github.com/bartnpu-droid/portfolio/tree/main/05-sheets-automations">Source code</a>
+  </footer>
+</div>
+
+<script>
+  // Filled in after the Apps Script web app is deployed.
+  const WEB_APP_URL = '';
+  const SHEET_URL = '';
+  const TELEGRAM_URL = '';
+
+  const form = document.getElementById('quote');
+  const done = document.getElementById('done');
+  const errorBox = document.getElementById('error');
+  const sendBtn = document.getElementById('send');
+  const today = new Date();
+  document.getElementById('date').min = today.toISOString().slice(0, 10);
+
+  function showError(text) {
+    errorBox.textContent = text;
+  }
+
+  function looksLikeContact(s) {
+    const email = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s);
+    const phone = /^\+?[\d\s()-]+$/.test(s) && s.replace(/\D/g, '').length >= 7;
+    return email || phone;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    showError('');
+    const data = new FormData(form);
+    const name = String(data.get('name') || '').trim();
+    const contact = String(data.get('contact') || '').trim();
+    if (name.length < 2) return showError('Please enter your name.');
+    if (!looksLikeContact(contact)) return showError('Please enter a phone number or an email.');
+    if (!WEB_APP_URL) return showError('The demo is being set up. Please try again later.');
+    data.append('source', 'Website');
+    sendBtn.disabled = true;
+    sendBtn.textContent = 'Sending…';
+    try {
+      const res = await fetch(WEB_APP_URL, { method: 'POST', body: new URLSearchParams(data) });
+      const out = await res.json();
+      if (!out.ok) throw new Error(out.error || 'Something went wrong.');
+      document.getElementById('done-title').textContent = 'Request #' + out.id + ' received';
+      document.getElementById('sheet-link').href = SHEET_URL;
+      document.getElementById('tg-link').href = TELEGRAM_URL;
+      document.getElementById('tg-link').style.display = TELEGRAM_URL ? '' : 'none';
+      form.style.display = 'none';
+      done.style.display = 'block';
+    } catch (err) {
+      showError(err.message === 'Failed to fetch' ? 'No connection. Please try again.' : err.message);
+    } finally {
+      sendBtn.disabled = false;
+      sendBtn.textContent = 'Send request';
+    }
+  });
+
+  document.getElementById('again').addEventListener('click', () => {
+    form.reset();
+    done.style.display = 'none';
+    form.style.display = 'block';
+  });
+</script>
+</body>
+</html>

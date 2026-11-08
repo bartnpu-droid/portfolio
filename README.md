@@ -48,3 +48,10 @@ Concept launch page for "TACET One" noise-cancelling headphones (fictional brand
 - Static site, no build step; Lighthouse 99–100 for performance, accessibility and best practices
 Run: double-click `start.command` inside the folder
 Screens: `04-3d-product-landing/screenshots/`, demo video: `04-3d-product-landing/tacet-one-demo.mp4`
+
+## 05 — Google Sheets automations (form → sheet → Telegram, daily price monitor)
+Folder: `05-sheets-automations`
+- Website form → Google Sheet → instant Telegram alert + morning summary (demo company "Brightway Cleaning", fictional)
+- Daily price monitor: product pages → Google Sheet with history, % change, lowest price, trend charts → Telegram alerts
+- Google Apps Script, no server and no monthly fees; offline tests: `node 05-sheets-automations/tests/run.js`
+Landing page with the form: `docs/lead-form/index.html`
