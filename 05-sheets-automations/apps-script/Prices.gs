@@ -109,7 +109,12 @@ function checkPrices() {
     if (/out of stock/i.test(info.stock)) alerts.push('🚫 <b>' + esc_(info.title) + '</b> is out of stock');
   });
 
-  if (historyRows.length) hist.getRange(hist.getLastRow() + 1, 1, historyRows.length, PRICES.HISTORY.length).setValues(historyRows);
+  if (historyRows.length) {
+    const start = hist.getLastRow() + 1;
+    hist.getRange(start, 1, historyRows.length, PRICES.HISTORY.length).setValues(historyRows);
+    hist.getRange(start, 1, historyRows.length, 1).setNumberFormat('dd mmm yyyy, hh:mm'); // writing dates resets the format
+    hist.getRange(start, 3, historyRows.length, 1).setNumberFormat('£0.00');
+  }
   formatLatest_(latest);
   if (alerts.length) {
     telegram_('🛒 <b>Daily price check</b>\n' + alerts.join('\n') + '\n<a href="' + ss.getUrl() + '">Open the sheet</a>');

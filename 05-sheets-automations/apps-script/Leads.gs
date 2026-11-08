@@ -57,6 +57,7 @@ function doPost(e) {
       const sh = leadsBook_().getSheetByName(LEADS.SHEET);
       sh.appendRow([new Date(), cell_(lead.nameShown), cell_(lead.contactShown), lead.service, lead.date, cell_(lead.messageShown), cell_(lead.source), 'New']);
       row = sh.getLastRow();
+      sh.getRange(row, 1).setNumberFormat('dd mmm yyyy, hh:mm'); // writing a date resets the cell format
     } finally {
       lock.releaseLock();
     }
