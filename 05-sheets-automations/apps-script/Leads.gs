@@ -55,7 +55,7 @@ function doPost(e) {
     let row;
     try {
       const sh = leadsBook_().getSheetByName(LEADS.SHEET);
-      sh.appendRow([new Date(), lead.nameShown, lead.contactShown, lead.service, lead.date, lead.messageShown, lead.source, 'New']);
+      sh.appendRow([new Date(), cell_(lead.nameShown), cell_(lead.contactShown), lead.service, lead.date, cell_(lead.messageShown), cell_(lead.source), 'New']);
       row = sh.getLastRow();
     } finally {
       lock.releaseLock();
@@ -103,6 +103,11 @@ function cleanLead_(p) {
     contactShown: LEADS.DEMO_MODE ? maskContact_(contact) : contact,
     messageShown: LEADS.DEMO_MODE ? message.slice(0, 200) : message,
   };
+}
+
+/** Text starting with = + - @ would turn into a formula in Sheets (a phone like +44… too): keep it as plain text. */
+function cell_(v) {
+  return typeof v === 'string' && /^[=+\-@]/.test(v) ? "'" + v : v;
 }
 
 function isContact_(s) {

@@ -145,7 +145,7 @@ test('without Telegram settings the lead is still saved', () => {
   assert.deepStrictEqual(r, { ok: true, id: 1 });
   const row = env.books[env.props.LEADS_SHEET_ID].getSheetByName('Leads').rowsOf(8)[0];
   assert.strictEqual(row[1], 'Anna');
-  assert.strictEqual(row[2], '+44******123');
+  assert.strictEqual(row[2], "'+44******123"); // leading ' keeps it as text, Sheets does not show it
   assert.strictEqual(row[3], 'Deep cleaning');
   assert.strictEqual(row[4], '2026-11-20');
   assert.ok(row[5].includes('[link removed]') && !row[5].includes('spam.com'));
@@ -185,6 +185,16 @@ test('unknown service becomes "Other", bad date is dropped', () => {
   assert.strictEqual(last[2], '07******456');
 });
 
+test('formula-like text is saved as plain text, not as a formula', () => {
+  out(C.doPost({ parameter: { name: '=HYPERLINK("x")', contact: 'eve@example.com', message: '=IMAGE("y") hi', source: '@ads' } }));
+  const rows = env.books[env.props.LEADS_SHEET_ID].getSheetByName('Leads').rowsOf(8);
+  const last = rows[rows.length - 1];
+  assert.strictEqual(last[1], '\'=HYPERLINK("x")');
+  assert.strictEqual(last[5], '\'=IMAGE("y") hi');
+  assert.strictEqual(last[6], "'@ads");
+  assert.strictEqual(last[2], 'e***@example.com');
+});
+
 test('spam guard stops after 40 requests in an hour', () => {
   const key = Object.keys(env.cache)[0];
   env.cache[key] = '40';
@@ -199,9 +209,9 @@ test('morning summary counts new requests by service', () => {
   C.dailyLeadsSummary();
   assert.strictEqual(env.sent.length, 1);
   const t = env.sent[0].body.text;
-  assert.ok(t.includes('Requests in the last 24 hours: 3'), t);
-  assert.ok(t.includes('Deep cleaning: 1') && t.includes('Office cleaning: 1') && t.includes('Other: 1'));
-  assert.ok(t.includes('Still waiting for a reply: 3'));
+  assert.ok(t.includes('Requests in the last 24 hours: 4'), t);
+  assert.ok(t.includes('Deep cleaning: 1') && t.includes('Office cleaning: 1') && t.includes('Other: 2'));
+  assert.ok(t.includes('Still waiting for a reply: 4'));
 });
 
 // ---------- prices ----------
