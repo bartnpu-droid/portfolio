@@ -4,6 +4,8 @@ Three custom Online Store 2.0 sections for **Solenne**, a fictional summer cloth
 
 ![Hero on desktop and mobile](screenshots/cover.jpg)
 
+Demo video (41 s): [`solenne-shopify-demo.mp4`](solenne-shopify-demo.mp4)
+
 ## 1. Hero: separate desktop and mobile images
 
 `sections/hero-media.liquid` + `assets/section-hero-media.css`

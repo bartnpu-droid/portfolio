@@ -72,4 +72,4 @@ Custom Online Store 2.0 sections for "Solenne", a fictional summer clothing bran
 - Free shipping progress bar in the cart drawer and on the cart page, updates instantly after every cart change
 - FAQ accordion on native `<details>`, one-open-at-a-time without JavaScript, optional FAQPage structured data
 - Every text, image, colour and position is a setting in the theme editor; Shopify Theme Check: 0 issues
-Screens: `07-shopify-sections/screenshots/`
+Screens: `07-shopify-sections/screenshots/`, demo video: `07-shopify-sections/solenne-shopify-demo.mp4`
