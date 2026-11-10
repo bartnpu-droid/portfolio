@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "ombra/free-shipping-progress",
+	"title": "Free shipping progress",
+	"category": "woocommerce",
+	"icon": "car",
+	"description": "How far the cart is from free shipping. Updates live after every cart change, also inside the mini-cart drawer.",
+	"keywords": [ "shipping", "cart", "progress", "free" ],
+	"textdomain": "ombra-store-tools",
+	"attributes": {
+		"variant": {
+			"type": "string",
+			"enum": [ "bar", "text" ],
+			"default": "bar"
+		}
+	},
+	"supports": {
+		"html": false,
+		"className": true,
+		"spacing": { "margin": true, "padding": true },
+		"typography": { "fontSize": true },
+		"interactivity": { "clientNavigation": true }
+	},
+	"editorScript": "ombra-store-tools-editor",
+	"style": "file:./style.css",
+	"viewScriptModule": "file:./view.js",
+	"render": "file:./render.php"
+}

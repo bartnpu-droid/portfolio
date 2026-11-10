@@ -1,0 +1,73 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"meta": {
+		"title": "Ombra: WooCommerce demo store",
+		"description": "Block theme and a store plugin for a made-up candle brand: live free shipping bar, gift options at checkout, product badges and scent notes. Product photos rendered in Blender.",
+		"author": "Ihor S.",
+		"categories": [
+			"WooCommerce",
+			"Themes"
+		]
+	},
+	"landingPage": "/",
+	"preferredVersions": {
+		"php": "8.3",
+		"wp": "latest"
+	},
+	"features": {
+		"networking": true
+	},
+	"login": true,
+	"steps": [
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "woocommerce"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "installTheme",
+			"themeData": {
+				"resource": "url",
+				"url": "https://raw.githubusercontent.com/bartnpu-droid/portfolio/main/08-woocommerce-store/playground/ombra-theme.zip"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "url",
+				"url": "https://raw.githubusercontent.com/bartnpu-droid/portfolio/main/08-woocommerce-store/playground/ombra-store-tools.zip"
+			},
+			"options": {
+				"activate": true
+			}
+		},
+		{
+			"step": "unzip",
+			"zipFile": {
+				"resource": "url",
+				"url": "https://raw.githubusercontent.com/bartnpu-droid/portfolio/main/08-woocommerce-store/playground/ombra-images.zip"
+			},
+			"extractToPath": "/wordpress/wp-content/ombra-setup"
+		},
+		{
+			"step": "writeFile",
+			"path": "/wordpress/wp-content/ombra-setup/setup.php",
+			"data": {
+				"resource": "url",
+				"url": "https://raw.githubusercontent.com/bartnpu-droid/portfolio/main/08-woocommerce-store/playground/setup.php"
+			}
+		},
+		{
+			"step": "runPHP",
+			"code": "<?php require_once '/wordpress/wp-load.php'; require '/wordpress/wp-content/ombra-setup/setup.php';"
+		}
+	]
+}

@@ -1,0 +1,87 @@
+/* Free shipping progress bar */
+.ombra-fsb {
+	--ombra-fsb-color: #a24e2b;
+	--ombra-fsb-track: rgba(34, 29, 25, 0.1);
+	display: grid;
+	gap: 0.55rem;
+}
+
+.ombra-fsb[hidden] {
+	display: none;
+}
+
+.ombra-fsb__message {
+	margin: 0;
+	font-size: 0.875rem;
+	line-height: 1.4;
+}
+
+.ombra-fsb__track {
+	position: relative;
+	height: 4px;
+	border-radius: 999px;
+	background: var(--ombra-fsb-track);
+	overflow: hidden;
+}
+
+.ombra-fsb__fill {
+	position: absolute;
+	inset: 0 auto 0 0;
+	border-radius: inherit;
+	background: var(--ombra-fsb-color);
+	transition: width 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.ombra-fsb.is-unlocked .ombra-fsb__message::before {
+	content: "";
+	display: inline-block;
+	width: 0.95em;
+	height: 0.95em;
+	margin-right: 0.4em;
+	vertical-align: -0.12em;
+	background: var(--ombra-fsb-color);
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9.5 16.2 5.3 12l-1.4 1.4 5.6 5.6L20.1 8.4 18.7 7z'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M9.5 16.2 5.3 12l-1.4 1.4 5.6 5.6L20.1 8.4 18.7 7z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Text only, e.g. in an announcement bar */
+.ombra-fsb--text {
+	display: block;
+	text-align: center;
+}
+
+.ombra-fsb--text .ombra-fsb__message {
+	font-size: inherit;
+}
+
+.ombra-fsb--text.is-unlocked .ombra-fsb__message::before {
+	background: currentColor;
+}
+
+/* Inside the Cart and Checkout blocks (the slot already draws the dividing lines) */
+.wc-block-components-totals-wrapper.slot-wrapper .ombra-fsb--blocks {
+	padding: 16px 0;
+}
+
+/* The checkout order summary pads its rows by 16px */
+.wp-block-woocommerce-checkout-order-summary-block .wc-block-components-totals-wrapper.slot-wrapper .ombra-fsb--blocks {
+	padding: 16px;
+}
+
+/* Inside the mini-cart drawer */
+.ombra-fsb.is-in-mini-cart {
+	padding: 0.9rem 1rem 1rem;
+	margin: 0 0 0.25rem;
+	border-bottom: 1px solid rgba(34, 29, 25, 0.1);
+}
+
+/* On a product page, under the add to cart button */
+.ombra-fsb.is-on-product {
+	padding: 0.9rem 1rem;
+	border-radius: 6px;
+	background: rgba(34, 29, 25, 0.04);
+}
+
+.ombra-fsb.is-on-product.is-empty .ombra-fsb__track {
+	display: none;
+}

@@ -1,0 +1,877 @@
+/*
+ * Ombra: the details theme.json cannot express.
+ * Colours, fonts, sizes and spacing come from theme.json presets (var(--wp--preset--…)).
+ */
+
+:root {
+	--ombra-radius: 6px;
+	--ombra-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+	--ombra-line: var(--wp--preset--color--line);
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-optical-sizing: auto;
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
+}
+
+::selection {
+	background: var(--wp--preset--color--accent-2);
+	color: var(--wp--preset--color--contrast);
+}
+
+:where(a, button, input, select, textarea, summary):focus-visible {
+	outline: 2px solid var(--wp--preset--color--accent);
+	outline-offset: 3px;
+}
+
+/* Small uppercase labels */
+.ombra-eyebrow {
+	font-family: var(--wp--preset--font-family--instrument-sans) !important;
+	font-size: 0.75rem !important;
+	font-weight: 600 !important;
+	letter-spacing: 0.16em !important;
+	line-height: 1.4 !important;
+	text-transform: uppercase;
+}
+
+/* Text link with an arrow */
+.ombra-link-arrow a {
+	font-weight: 500;
+	text-decoration: none;
+	border-bottom: 1px solid currentColor;
+	padding-bottom: 2px;
+	white-space: nowrap;
+}
+
+.ombra-link-arrow a::after {
+	content: "\2009\2192";
+	display: inline-block;
+	transition: transform 0.35s var(--ombra-ease);
+}
+
+.ombra-link-arrow a:hover::after {
+	transform: translateX(3px);
+}
+
+/* ------------------------------------------------------------------ header */
+
+.ombra-site-header {
+	position: sticky;
+	top: 0;
+	z-index: 40;
+	background: var(--wp--preset--color--base);
+}
+
+.admin-bar .ombra-site-header {
+	top: var(--wp-admin--admin-bar--height, 32px);
+}
+
+.ombra-announcement {
+	text-align: center;
+	letter-spacing: 0.04em;
+}
+
+.ombra-announcement p {
+	margin: 0;
+}
+
+/* The fallback line shows only if the Ombra Store Tools plugin is not active */
+.ombra-announcement:has(.ombra-fsb) .ombra-announcement__fallback {
+	display: none;
+}
+
+.ombra-footer__rule {
+	color: #3a322b;
+	border-color: #3a322b;
+	opacity: 1;
+}
+
+.ombra-header__row {
+	display: grid !important;
+	grid-template-columns: 1fr auto 1fr;
+	align-items: center;
+	gap: 1rem;
+}
+
+.ombra-header__row > .ombra-wordmark {
+	justify-self: center;
+}
+
+.ombra-header__actions {
+	justify-self: end;
+}
+
+.ombra-wordmark {
+	margin: 0;
+	/* letter-spacing adds space after the last letter; shift it back so the word is centred */
+	margin-right: -0.42em !important;
+	white-space: nowrap;
+}
+
+.ombra-wordmark a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.ombra-nav .wp-block-navigation__container {
+	gap: 1.6rem;
+}
+
+.ombra-nav .wp-block-navigation-item__content {
+	padding: 0.35rem 0;
+}
+
+.ombra-nav .current-menu-item > .wp-block-navigation-item__content,
+.ombra-nav .wp-block-navigation-item__content:hover {
+	text-decoration: underline;
+	text-underline-offset: 0.35em;
+	text-decoration-thickness: 1px;
+}
+
+.ombra-header__actions .wp-block-search__button,
+.ombra-header__actions .wc-block-mini-cart__button,
+.ombra-header__actions .wc-block-customer-account a {
+	background: transparent;
+	border: 0;
+	color: var(--wp--preset--color--contrast);
+	padding: 0.4rem;
+	border-radius: 999px;
+}
+
+.ombra-header__actions .wp-block-search__button svg,
+.ombra-header__actions .wc-block-mini-cart__button svg,
+.ombra-header__actions .wc-block-customer-account svg {
+	width: 22px;
+	height: 22px;
+}
+
+.ombra-header__actions .wp-block-search__button:hover,
+.ombra-header__actions .wc-block-mini-cart__button:hover,
+.ombra-header__actions .wc-block-customer-account a:hover {
+	background: var(--wp--preset--color--base-2);
+}
+
+.ombra-header__actions .wc-block-mini-cart__badge {
+	background: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--base);
+	font-size: 0.625rem;
+	font-weight: 600;
+}
+
+/* Expanded search field in the header */
+.ombra-search.wp-block-search__button-only:not(.wp-block-search__searchfield-hidden) .wp-block-search__inside-wrapper {
+	background: var(--wp--preset--color--base);
+	border: 1px solid var(--ombra-line);
+	border-radius: 999px;
+	padding-left: 0.8rem;
+}
+
+.ombra-search .wp-block-search__input {
+	border: 0;
+	background: transparent;
+	font-size: 0.875rem;
+}
+
+.ombra-back-link a,
+.ombra-secure {
+	color: var(--wp--preset--color--contrast-2);
+	text-decoration: none;
+}
+
+/* Mobile menu overlay */
+.ombra-nav .wp-block-navigation__responsive-container.is-menu-open {
+	background-color: var(--wp--preset--color--base) !important;
+	color: var(--wp--preset--color--contrast) !important;
+	padding: var(--wp--preset--spacing--40) var(--wp--preset--spacing--30);
+}
+
+.ombra-nav .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation-item__content {
+	font-family: var(--wp--preset--font-family--fraunces);
+	font-size: 1.9rem;
+	font-weight: 360;
+}
+
+@media (max-width: 781px) {
+	.ombra-header__row {
+		grid-template-columns: 1fr auto 1fr;
+		gap: 0.5rem;
+	}
+
+	.ombra-wordmark {
+		font-size: 1.25rem !important;
+		letter-spacing: 0.34em !important;
+		margin-right: -0.34em !important;
+	}
+
+	.ombra-header__actions .ombra-account {
+		display: none;
+	}
+}
+
+/* ------------------------------------------------------------------ hero */
+
+.ombra-hero {
+	overflow: hidden;
+}
+
+.ombra-hero .wp-block-cover__background {
+	opacity: 1 !important;
+	background: linear-gradient(90deg, rgba(23, 19, 15, 0.82) 0%, rgba(23, 19, 15, 0.5) 34%, rgba(23, 19, 15, 0) 62%) !important;
+}
+
+.ombra-hero h1 {
+	font-weight: 320;
+	letter-spacing: -0.025em;
+}
+
+.ombra-hero .wp-block-cover__image-background {
+	animation: ombra-settle 2.4s var(--ombra-ease) both;
+}
+
+@keyframes ombra-settle {
+	from {
+		transform: scale(1.04);
+		opacity: 0.6;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ombra-hero .wp-block-cover__image-background {
+		animation: none;
+	}
+}
+
+.ombra-button-light .wp-block-button__link {
+	background: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--contrast);
+}
+
+.ombra-button-light .wp-block-button__link:hover {
+	background: var(--wp--preset--color--accent-2);
+	color: var(--wp--preset--color--contrast);
+}
+
+.ombra-button-ghost .wp-block-button__link {
+	background: transparent;
+	color: var(--wp--preset--color--base);
+	border: 1px solid rgba(242, 237, 230, 0.45);
+}
+
+.ombra-button-ghost .wp-block-button__link:hover {
+	background: rgba(242, 237, 230, 0.1);
+	border-color: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--base);
+}
+
+@media (max-width: 781px) {
+	.ombra-hero {
+		min-height: 88svh !important;
+		align-items: flex-end !important;
+	}
+
+	.ombra-hero .wp-block-cover__background {
+		background: linear-gradient(0deg, rgba(23, 19, 15, 0.95) 0%, rgba(23, 19, 15, 0.55) 38%, rgba(23, 19, 15, 0) 62%) !important;
+	}
+
+	.ombra-hero .wp-block-cover__image-background {
+		object-position: 69% 50% !important;
+	}
+
+	/* On a phone the candles sit above the text: a shorter heading, no paragraph */
+	.ombra-hero h1 {
+		font-size: 2.5rem !important;
+	}
+
+	.ombra-hero__text > p:not(.ombra-eyebrow) {
+		display: none;
+	}
+}
+
+/* ------------------------------------------------------------------ sections */
+
+.ombra-section__head {
+	gap: 1rem;
+}
+
+.ombra-section__head h2 {
+	margin: 0;
+}
+
+.ombra-tile__image,
+.ombra-scent__image,
+.ombra-story .wp-block-media-text__media {
+	overflow: hidden;
+	border-radius: var(--ombra-radius);
+	margin: 0;
+}
+
+.ombra-tile__image img,
+.ombra-scent__image img {
+	display: block;
+	width: 100%;
+	transition: transform 0.9s var(--ombra-ease);
+}
+
+.ombra-tile:hover img,
+.ombra-scent:hover .ombra-scent__image img {
+	transform: scale(1.035);
+}
+
+.ombra-tile h3,
+.ombra-scent h3 {
+	margin: 0.3rem 0 0;
+}
+
+.ombra-tile h3 a {
+	text-decoration: none;
+}
+
+.ombra-tile p {
+	margin: 0;
+}
+
+.ombra-notes {
+	letter-spacing: 0.02em;
+}
+
+.ombra-story .wp-block-media-text__content {
+	padding: var(--wp--preset--spacing--40) 0 var(--wp--preset--spacing--40) var(--wp--preset--spacing--50);
+}
+
+.ombra-story .wp-block-media-text__media img {
+	aspect-ratio: 4 / 5;
+	object-fit: cover;
+}
+
+.ombra-points {
+	padding: 0;
+	margin: 1.6rem 0;
+	display: grid;
+	gap: 1rem;
+}
+
+.ombra-points li {
+	padding-left: 1.4rem;
+	position: relative;
+	color: var(--wp--preset--color--contrast-2);
+}
+
+.ombra-points li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.62em;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: var(--wp--preset--color--accent);
+}
+
+.ombra-points strong {
+	color: var(--wp--preset--color--contrast);
+	font-weight: 600;
+	display: block;
+}
+
+.ombra-tip__number {
+	margin: 0;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.ombra-tip {
+	border-top: 1px solid var(--ombra-line);
+	padding-top: 1.4rem;
+}
+
+@media (max-width: 781px) {
+	.ombra-story .wp-block-media-text__content {
+		padding: var(--wp--preset--spacing--40) 0 0;
+	}
+}
+
+/* ------------------------------------------------------------------ product cards */
+
+/* Fixed column counts (WooCommerce's auto-fill grid drops a column when the gap grows) */
+.ombra-products .wc-block-product-template__responsive {
+	--ombra-columns: 3;
+	grid-template-columns: repeat(var(--ombra-columns), minmax(0, 1fr));
+	column-gap: clamp(0.9rem, 2vw, 1.6rem);
+	row-gap: clamp(2rem, 4vw, 3rem);
+}
+
+.ombra-products .wc-block-product-template__responsive.columns-4 {
+	--ombra-columns: 4;
+}
+
+@media (max-width: 1023px) {
+	.ombra-products .wc-block-product-template__responsive.columns-4 {
+		--ombra-columns: 3;
+	}
+}
+
+@media (max-width: 781px) {
+	.ombra-products .wc-block-product-template__responsive.columns-3,
+	.ombra-products .wc-block-product-template__responsive.columns-4 {
+		--ombra-columns: 2;
+	}
+}
+
+.ombra-products .wc-block-product {
+	display: flex;
+	flex-direction: column;
+	gap: 0.35rem;
+	text-align: left;
+}
+
+.ombra-products .wc-block-components-product-image {
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--ombra-radius);
+	margin-bottom: 0.7rem !important;
+	background: var(--wp--preset--color--base-2);
+}
+
+.ombra-products .wc-block-components-product-image img {
+	transition: transform 0.9s var(--ombra-ease);
+}
+
+.ombra-products .wc-block-product:hover .wc-block-components-product-image img {
+	transform: scale(1.04);
+}
+
+.ombra-products .wc-block-components-product-image__inner-container {
+	position: absolute;
+	top: 0.8rem;
+	left: 0.8rem;
+	right: auto;
+	bottom: auto;
+	pointer-events: none;
+}
+
+.ombra-products .wp-block-post-title {
+	margin: 0;
+	font-family: var(--wp--preset--font-family--fraunces);
+	font-weight: 380;
+	line-height: 1.2;
+}
+
+.ombra-products .wp-block-post-title a {
+	text-decoration: none;
+}
+
+.ombra-products .wc-block-components-product-price {
+	color: var(--wp--preset--color--contrast-2);
+	margin: 0;
+}
+
+.ombra-card__foot {
+	margin-top: auto;
+	padding-top: 0.4rem;
+	gap: 0.5rem;
+}
+
+.ombra-card__button .wp-block-button__link,
+.ombra-card__button .wc-block-components-product-button__button {
+	background: transparent !important;
+	color: var(--wp--preset--color--contrast) !important;
+	border: 1px solid var(--ombra-line) !important;
+	padding: 0.55em 1.1em !important;
+	font-size: 0.8125rem !important;
+	min-height: 0 !important;
+	white-space: nowrap;
+}
+
+.ombra-card__button .wp-block-button__link:hover,
+.ombra-card__button .wc-block-components-product-button__button:hover {
+	background: var(--wp--preset--color--contrast) !important;
+	border-color: var(--wp--preset--color--contrast) !important;
+	color: var(--wp--preset--color--base) !important;
+}
+
+.ombra-card__button {
+	margin: 0 !important;
+}
+
+.ombra-card__button .wc-block-components-product-button__button {
+	margin: 0;
+}
+
+.ombra-card__foot .wc-block-components-product-price {
+	margin: 0 !important;
+}
+
+/* ------------------------------------------------------------------ shop page */
+
+.ombra-shop__head .wp-block-query-title {
+	margin: 0;
+}
+
+.ombra-shop__head .wp-block-term-description p {
+	margin: 0;
+}
+
+.ombra-chip {
+	margin: 0;
+}
+
+.ombra-chip a {
+	display: inline-block;
+	padding: 0.45rem 1.05rem;
+	border: 1px solid var(--ombra-line);
+	border-radius: 999px;
+	text-decoration: none;
+	transition: border-color 0.25s, background-color 0.25s;
+}
+
+.ombra-chip a:hover {
+	border-color: var(--wp--preset--color--contrast);
+	color: inherit;
+}
+
+.ombra-chip.is-current a {
+	background: var(--wp--preset--color--contrast);
+	border-color: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+}
+
+.ombra-shop__toolbar .woocommerce-ordering select {
+	border: 0;
+	background-color: transparent;
+	font-size: 0.875rem;
+	padding-right: 1.6rem;
+}
+
+.ombra-shop__toolbar .woocommerce-result-count {
+	margin: 0;
+	color: var(--wp--preset--color--contrast-2);
+}
+
+.wp-block-woocommerce-breadcrumbs,
+.woocommerce-breadcrumb {
+	color: var(--wp--preset--color--contrast-2);
+}
+
+.woocommerce-breadcrumb a {
+	text-decoration: none;
+}
+
+.wp-block-query-pagination {
+	margin-top: var(--wp--preset--spacing--50);
+}
+
+/* ------------------------------------------------------------------ single product */
+
+.ombra-product__summary {
+	position: sticky;
+	top: 8.5rem;
+	align-self: flex-start;
+}
+
+.ombra-product__summary .wp-block-post-title {
+	margin: 0;
+	font-weight: 340;
+}
+
+.ombra-product__summary .wc-block-components-product-price {
+	margin: 0;
+}
+
+.ombra-product__excerpt {
+	color: var(--wp--preset--color--contrast-2);
+}
+
+.ombra-product__excerpt p {
+	margin: 0;
+}
+
+.ombra-product .wp-block-woocommerce-product-gallery {
+	gap: 0.8rem;
+}
+
+.ombra-product .wc-block-product-gallery-large-image,
+.ombra-product .wc-block-product-gallery-large-image img {
+	border-radius: var(--ombra-radius);
+}
+
+.ombra-product .wc-block-product-gallery-thumbnails__thumbnail img {
+	border-radius: 4px;
+}
+
+/* Add to cart with options: size and scent chips */
+.ombra-product [class*="variation-selector-attribute-name"] {
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.ombra-product .wc-block-product-filter-chips__items {
+	gap: 0.5rem;
+}
+
+.ombra-product .wc-block-product-filter-chips__item {
+	padding: 0.7em 1.3em;
+	border-radius: 999px;
+	border-color: var(--ombra-line);
+	font-size: 0.9375rem;
+	line-height: 1.1;
+	transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.ombra-product .wc-block-product-filter-chips__item:hover {
+	border-color: var(--wp--preset--color--contrast);
+}
+
+.ombra-product .wc-block-product-filter-chips__item[aria-checked="true"] {
+	background: var(--wp--preset--color--contrast);
+	border-color: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+}
+
+.ombra-product .wc-block-components-quantity-selector {
+	border-radius: 999px;
+	border-color: var(--ombra-line);
+	min-height: 3rem;
+}
+
+.ombra-product .wc-block-components-quantity-selector::after {
+	border-radius: 999px;
+	border-color: var(--ombra-line);
+}
+
+.ombra-product .wp-block-woocommerce-add-to-cart-with-options .wp-block-button__link,
+.ombra-product .wp-block-woocommerce-add-to-cart-with-options .wc-block-components-product-button__button {
+	min-width: 13rem;
+}
+
+.ombra-product__details {
+	border-top: 1px solid var(--ombra-line);
+}
+
+.wp-block-details summary {
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	cursor: pointer;
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.wp-block-details summary::-webkit-details-marker {
+	display: none;
+}
+
+.wp-block-details summary::after {
+	content: "+";
+	font-size: 1.25rem;
+	font-weight: 300;
+	line-height: 1;
+}
+
+.wp-block-details[open] summary::after {
+	content: "\2212";
+}
+
+.wp-block-details > :not(summary) {
+	color: var(--wp--preset--color--contrast-2);
+	margin-top: 0.8rem;
+}
+
+@media (max-width: 781px) {
+	.ombra-product__summary {
+		position: static;
+	}
+}
+
+/* ------------------------------------------------------------------ cart, checkout, mini-cart */
+
+.wc-block-cart .wc-block-cart__totals-title,
+.wc-block-components-checkout-step__title,
+.wc-block-components-order-summary .wc-block-components-panel__button,
+.wc-block-mini-cart__title {
+	font-family: var(--wp--preset--font-family--fraunces);
+	font-weight: 380;
+	letter-spacing: -0.01em;
+	text-transform: none;
+}
+
+.wc-block-components-product-name {
+	font-family: var(--wp--preset--font-family--fraunces);
+	font-size: 1.1rem;
+	text-decoration: none;
+}
+
+.wc-block-cart-item__image img,
+.wc-block-components-order-summary-item__image img {
+	border-radius: 4px;
+}
+
+.wc-block-mini-cart__drawer .wc-block-components-drawer__content {
+	background: var(--wp--preset--color--base);
+}
+
+.wc-block-mini-cart__title {
+	font-size: 1.6rem;
+}
+
+.ombra-empty-bag {
+	font-family: var(--wp--preset--font-family--fraunces);
+	font-size: 1.4rem;
+	margin-top: var(--wp--preset--spacing--40);
+}
+
+.wc-block-components-text-input input,
+.wc-block-components-combobox .wc-block-components-combobox-control input,
+.wc-block-components-textarea,
+.wc-blocks-components-select .wc-blocks-components-select__select {
+	border-radius: 4px !important;
+}
+
+/* ------------------------------------------------------------------ pages, footer */
+
+.ombra-page__title {
+	margin-bottom: var(--wp--preset--spacing--30);
+}
+
+
+.ombra-footer__links {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: grid;
+	gap: 0.6rem;
+	font-size: 0.9375rem;
+}
+
+.ombra-footer a {
+	text-decoration: none;
+}
+
+.ombra-footer a:hover {
+	color: var(--wp--preset--color--accent-2) !important;
+}
+
+.ombra-footer .ombra-eyebrow {
+	margin-bottom: 1rem;
+}
+
+.ombra-wordmark--footer {
+	font-size: 1.5rem !important;
+	margin-bottom: 1.2rem;
+}
+
+/* Demo only: shortcut to the admin for logged-in visitors of the live demo */
+.ombra-demo-note {
+	position: fixed;
+	left: 1rem;
+	bottom: 1rem;
+	z-index: 60;
+	margin: 0;
+	padding: 0.65rem 1.1rem;
+	border-radius: 999px;
+	background: var(--wp--preset--color--accent);
+	color: var(--wp--preset--color--base);
+	box-shadow: 0 10px 30px -12px rgba(23, 19, 15, 0.6);
+}
+
+.ombra-demo-note a {
+	color: inherit;
+	font-weight: 600;
+}
+
+/* ------------------------------------------------------------------ phone tweaks */
+
+@media (max-width: 781px) {
+	/* Cards: the whole card is a link, so the price is enough */
+	.ombra-card__button {
+		display: none !important;
+	}
+
+	/* Category chips scroll sideways instead of wrapping */
+	.ombra-chips {
+		flex-wrap: nowrap !important;
+		overflow-x: auto;
+		scrollbar-width: none;
+		margin-right: calc(-1 * var(--wp--style--root--padding-right, 1.25rem));
+		padding-right: var(--wp--style--root--padding-right, 1.25rem);
+	}
+
+	.ombra-chips::-webkit-scrollbar {
+		display: none;
+	}
+
+	.ombra-chip {
+		flex: 0 0 auto;
+	}
+
+	.ombra-products .wp-block-post-title {
+		font-size: 1.1rem !important;
+	}
+}
+
+/* In-page links land below the sticky header */
+:target,
+#scents {
+	scroll-margin-top: 7.5rem;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+/* Footer at the bottom of short pages */
+.wp-site-blocks {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	min-height: 100dvh;
+}
+
+.wp-site-blocks > main {
+	flex: 1 0 auto;
+}
+
+/* Section headings inside page content: a step below the page title */
+.ombra-page .wp-block-post-content h2 {
+	font-size: var(--wp--preset--font-size--x-large);
+	margin-top: var(--wp--preset--spacing--40);
+}
+
+.ombra-page .wp-block-post-content .wp-block-details summary {
+	font-size: 0.9375rem;
+	letter-spacing: 0.02em;
+	text-transform: none;
+	font-weight: 600;
+}
+
+/* Search field outside the header */
+.wp-block-search:not(.ombra-search) .wp-block-search__input {
+	border: 1px solid var(--ombra-line);
+	border-radius: 999px;
+	padding: 0.75em 1.2em;
+	background: var(--wp--preset--color--base);
+	font-size: 0.9375rem;
+}

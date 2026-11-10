@@ -1,0 +1,66 @@
+/* Product badge */
+.ombra-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+	padding: 0.42em 0.8em 0.4em;
+	border-radius: 999px;
+	font-size: 0.6875rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	line-height: 1;
+	text-transform: uppercase;
+	white-space: nowrap;
+	background: #f2ede6;
+	color: #221d19;
+	box-shadow: 0 1px 2px rgba(34, 29, 25, 0.08);
+}
+
+.ombra-badge::before {
+	content: "";
+	width: 0.5em;
+	height: 0.5em;
+	border-radius: 50%;
+	background: currentColor;
+}
+
+.ombra-badge--bestseller::before {
+	background: #a24e2b;
+}
+
+.ombra-badge--new {
+	background: #221d19;
+	color: #f2ede6;
+}
+
+.ombra-badge--new::before {
+	background: #d2a877;
+}
+
+.ombra-badge--limited {
+	background: #a24e2b;
+	color: #fbf6ef;
+}
+
+.ombra-badge--back::before {
+	background: #5f7a5a;
+}
+
+.ombra-badge--sale {
+	background: #a24e2b;
+	color: #fbf6ef;
+}
+
+.ombra-badge--inline {
+	box-shadow: none;
+	background: transparent;
+	padding: 0;
+	color: #a24e2b;
+}
+
+.ombra-badge--inline.ombra-badge--new,
+.ombra-badge--inline.ombra-badge--limited,
+.ombra-badge--inline.ombra-badge--sale {
+	background: transparent;
+	color: #a24e2b;
+}

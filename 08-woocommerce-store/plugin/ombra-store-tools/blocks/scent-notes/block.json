@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "ombra/scent-notes",
+	"title": "Scent notes",
+	"category": "woocommerce-product-elements",
+	"icon": "admin-site-alt3",
+	"description": "Top, heart and base notes and the burn time from the product's \"Ombra details\" tab.",
+	"keywords": [ "scent", "notes", "fragrance", "burn time" ],
+	"textdomain": "ombra-store-tools",
+	"usesContext": [ "postId", "postType" ],
+	"attributes": {
+		"variant": {
+			"type": "string",
+			"enum": [ "full", "line" ],
+			"default": "full"
+		}
+	},
+	"supports": {
+		"html": false,
+		"className": true,
+		"spacing": { "margin": true },
+		"typography": { "fontSize": true },
+		"interactivity": { "clientNavigation": true }
+	},
+	"editorScript": "ombra-store-tools-editor",
+	"style": "file:./style.css",
+	"render": "file:./render.php"
+}

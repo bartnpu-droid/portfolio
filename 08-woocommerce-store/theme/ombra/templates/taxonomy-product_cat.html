@@ -1,0 +1,65 @@
+<!-- wp:template-part {"slug":"header","tagName":"header","className":"ombra-site-header"} /-->
+
+<!-- wp:group {"tagName":"main","className":"ombra-shop","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|60"},"blockGap":"var:preset|spacing|30"}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group ombra-shop" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--60)">
+<!-- wp:woocommerce/breadcrumbs {"align":"wide","fontSize":"small"} /-->
+
+<!-- wp:group {"align":"wide","className":"ombra-shop__head","style":{"spacing":{"blockGap":"0.8rem"}},"layout":{"type":"constrained","contentSize":"720px","justifyContent":"left"}} -->
+<div class="wp-block-group alignwide ombra-shop__head">
+<!-- wp:query-title {"type":"archive","showPrefix":false,"fontSize":"huge"} /-->
+
+<!-- wp:term-description {"textColor":"contrast-2","fontSize":"large"} /-->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:pattern {"slug":"ombra/category-chips"} /-->
+
+<!-- wp:woocommerce/store-notices /-->
+
+<!-- wp:group {"align":"wide","className":"ombra-shop__toolbar","style":{"border":{"top":{"color":"var:preset|color|line","width":"1px"},"bottom":{"color":"var:preset|color|line","width":"1px"}},"spacing":{"padding":{"top":"0.6rem","bottom":"0.6rem"}}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+<div class="wp-block-group alignwide ombra-shop__toolbar" style="border-top-color:var(--wp--preset--color--line);border-top-width:1px;border-bottom-color:var(--wp--preset--color--line);border-bottom-width:1px;padding-top:0.6rem;padding-bottom:0.6rem">
+<!-- wp:woocommerce/product-results-count {"fontSize":"small"} /-->
+
+<!-- wp:woocommerce/catalog-sorting {"fontSize":"small"} /-->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:woocommerce/product-collection {"queryId":0,"query":{"woocommerceAttributes":[],"woocommerceStockStatus":["instock","outofstock","onbackorder"],"taxQuery":{},"isProductCollectionBlock":true,"perPage":12,"pages":0,"offset":0,"postType":"product","order":"asc","orderBy":"menu_order","author":"","search":"","exclude":[],"sticky":"","inherit":true},"tagName":"div","dimensions":{"widthType":"fill","fixedWidth":""},"displayLayout":{"type":"flex","columns":3,"shrinkColumns":true},"convertedFromProducts":false,"queryContextIncludes":["collection"],"align":"wide","className":"ombra-products ombra-products--grid"} -->
+<div class="wp-block-woocommerce-product-collection alignwide ombra-products ombra-products--grid">
+<!-- wp:woocommerce/product-template -->
+<!-- wp:woocommerce/product-image {"showSaleBadge":false,"imageSizing":"thumbnail","isDescendentOfQueryLoop":true,"aspectRatio":"1","style":{"border":{"radius":"6px"}}} -->
+<!-- wp:ombra/product-badge /-->
+<!-- /wp:woocommerce/product-image -->
+
+<!-- wp:post-title {"level":2,"isLink":true,"fontSize":"large","__woocommerceNamespace":"woocommerce/product-collection/product-title"} /-->
+
+<!-- wp:ombra/scent-notes {"variant":"line"} /-->
+
+<!-- wp:group {"className":"ombra-card__foot","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+<div class="wp-block-group ombra-card__foot">
+<!-- wp:woocommerce/product-price {"isDescendentOfQueryLoop":true,"fontSize":"small"} /-->
+
+<!-- wp:woocommerce/product-button {"isDescendentOfQueryLoop":true,"fontSize":"small","className":"ombra-card__button"} /-->
+</div>
+<!-- /wp:group -->
+<!-- /wp:woocommerce/product-template -->
+
+<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->
+<!-- wp:query-pagination-previous /-->
+<!-- wp:query-pagination-numbers /-->
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination -->
+
+<!-- wp:woocommerce/product-collection-no-results -->
+<!-- wp:group {"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","flexWrap":"wrap"}} -->
+<div class="wp-block-group">
+<!-- wp:pattern {"slug":"woocommerce/no-products-found-clear-filters"} /-->
+</div>
+<!-- /wp:group -->
+<!-- /wp:woocommerce/product-collection-no-results -->
+</div>
+<!-- /wp:woocommerce/product-collection -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

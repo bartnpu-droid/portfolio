@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "ombra/product-badge",
+	"title": "Product badge",
+	"category": "woocommerce-product-elements",
+	"icon": "awards",
+	"description": "The badge chosen on the product (New, Bestseller, Limited edition, Back in stock), or Sale for discounted products.",
+	"keywords": [ "badge", "label", "new", "bestseller" ],
+	"textdomain": "ombra-store-tools",
+	"usesContext": [ "postId", "postType" ],
+	"attributes": {
+		"variant": {
+			"type": "string",
+			"enum": [ "overlay", "inline" ],
+			"default": "overlay"
+		}
+	},
+	"supports": {
+		"html": false,
+		"className": true,
+		"interactivity": { "clientNavigation": true }
+	},
+	"editorScript": "ombra-store-tools-editor",
+	"style": "file:./style.css",
+	"render": "file:./render.php"
+}

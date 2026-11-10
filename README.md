@@ -4,6 +4,7 @@ Live demos:
 - 01 Telegram booking bot: https://t.me/NorthsideBarberDemoBot
 - 03 Dental clinic website with the AI receptionist: https://dental-clinic-production-b8f4.up.railway.app
 - 04 TACET One product landing page: https://tacet-one-production.up.railway.app
+- 08 Ombra WooCommerce store (opens in WordPress Playground): https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bartnpu-droid/portfolio/main/08-woocommerce-store/playground/blueprint.json
 
 ## 01 — Telegram booking bot with Mini App and online payments
 Folder: `01-telegram-booking-bot`
@@ -73,3 +74,11 @@ Custom Online Store 2.0 sections for "Solenne", a fictional summer clothing bran
 - FAQ accordion on native `<details>`, one-open-at-a-time without JavaScript, optional FAQPage structured data
 - Every text, image, colour and position is a setting in the theme editor; Shopify Theme Check: 0 issues
 Screens: `07-shopify-sections/screenshots/`, demo video: `07-shopify-sections/solenne-shopify-demo.mp4`
+
+## 08 — WooCommerce store: block theme + store plugin
+Folder: `08-woocommerce-store`
+A complete WooCommerce store for "Ombra", a fictional candle brand, on WordPress 7.1 and WooCommerce 11.2. Product photos rendered in Blender.
+- Store plugin: free shipping progress bar that stays in step with the cart (Cart and Checkout blocks, mini-cart drawer, header, product page) through the Store API; gift options at checkout with the Additional Checkout Fields API; product badges and scent notes with their own blocks; a settings tab
+- Block theme: theme.json design system, templates for shop, product, cart and checkout, Product Collection and Add to Cart with Options blocks (size and scent chips), self-hosted fonts, phone layout
+- Live demo in WordPress Playground: WooCommerce, theme, plugin and products install in the browser in about a minute
+Screens: `08-woocommerce-store/screenshots/`, demo video: `08-woocommerce-store/ombra-woocommerce-demo.mp4`
