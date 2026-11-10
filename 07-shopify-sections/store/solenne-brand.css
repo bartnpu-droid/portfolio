@@ -1,0 +1,150 @@
+/*
+  Solenne brand layer on top of Dawn.
+  Store styling only: wordmark, small uppercase labels, product card type, spacing.
+  Loaded after base.css in layout/theme.liquid.
+*/
+
+/* Wordmark: the shop name as a wide, uppercase logo */
+.header__heading-link .h2 {
+  font-family: var(--font-heading-family);
+  font-weight: 400;
+  font-size: 2.4rem;
+  line-height: 1;
+  letter-spacing: 0.42em;
+  margin-right: -0.42em; /* keeps the word optically centred */
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media screen and (min-width: 990px) {
+  .header__heading-link .h2 {
+    font-size: 3rem;
+  }
+}
+
+/* Small uppercase labels: navigation, announcement, footer headings */
+.header__menu-item,
+.announcement-bar__message,
+.footer-block__heading,
+.multicolumn-card__info > h3,
+.image-with-text__text--caption {
+  font-family: var(--font-body-family);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.header__menu-item {
+  font-size: 1.2rem;
+}
+
+.announcement-bar__message {
+  font-size: 1.1rem;
+}
+
+.footer-block__heading {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.multicolumn-card__info > h3 {
+  font-size: 1.3rem;
+  line-height: 1.6;
+}
+
+.menu-drawer__menu-item {
+  font-size: 1.5rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Buttons */
+.button,
+.shopify-payment-button__button--unbranded {
+  font-size: 1.2rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Product cards: quiet uppercase names, calm prices */
+.card__heading {
+  font-family: var(--font-body-family);
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.card__heading a {
+  text-decoration: none;
+}
+
+.card-information .price {
+  font-size: 1.35rem;
+  letter-spacing: 0.06em;
+}
+
+.card-information {
+  margin-top: 0.4rem;
+}
+
+/* Section titles a little lighter and tighter */
+.title,
+.product__title h1 {
+  letter-spacing: -0.01em;
+}
+
+/* Product page price */
+.product .price--large {
+  font-size: 1.8rem;
+  letter-spacing: 0.06em;
+}
+
+/* Hide the "Powered by Shopify" credit */
+.copyright__content a[href*='shopify.com'] {
+  display: none;
+}
+
+/* Phones: a smaller wordmark and announcement so the header fits on one line */
+@media screen and (max-width: 749px) {
+  .header__heading-link .h2 {
+    font-size: 2rem;
+    letter-spacing: 0.3em;
+    margin-right: -0.3em;
+  }
+
+  .announcement-bar__message {
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+  }
+
+  .utility-bar__grid.page-width {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+/* Even line breaks in the hero heading and subheading */
+.hero-media__heading,
+.hero-media__text {
+  text-wrap: balance;
+}
+
+/* Product page tabs and the share link as small uppercase labels */
+.product .accordion__title,
+.share-button__button {
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Cart: item names in the same style as the product cards */
+.cart-item .cart-item__name {
+  font-family: var(--font-body-family);
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}

@@ -21,7 +21,7 @@ Three custom Online Store 2.0 sections for **Solenne**, a fictional summer cloth
 
 `snippets/free-shipping-bar.liquid` + `assets/component-free-shipping-bar.css`
 
-- Shows "You're $62.00 away from free shipping" with a progress bar in the cart drawer and on the cart page, then "You've unlocked free shipping".
+- Shows "You're $62 away from free shipping" with a progress bar in the cart drawer and on the cart page, then "You've unlocked free shipping".
 - It sits inside the parts of the cart that Dawn re-renders after every change, so it updates instantly without extra JavaScript.
 - Theme settings → Free shipping bar: on/off, the goal, both messages (`[amount]` is replaced with the amount left), bar and track colours.
 
@@ -40,7 +40,7 @@ Three custom Online Store 2.0 sections for **Solenne**, a fictional summer cloth
 
 ## The store around the sections
 
-The demo store is password-protected, so here is the whole home page and a product page. The product page uses Dawn's own blocks with size, fabric and shipping tabs.
+The demo store is password-protected, so here is the whole home page and a product page. Everything around the three sections is Dawn's own sections and settings (lookbook, story block, size, fabric and shipping tabs on the product page), plus one small stylesheet for the brand look: `store/solenne-brand.css` (the wordmark, small uppercase labels, product cards, a phone fix for the header).
 
 ![Home page of the demo store](screenshots/store-home.jpg)
 
