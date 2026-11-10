@@ -1,0 +1,480 @@
+{%- comment -%}
+  Hero with separate desktop and mobile images.
+  One app-free section: every text, image, colour and position is a setting in the theme editor.
+  The first hero on a page is not lazy-loaded and gets fetchpriority="high", so it shows right away.
+{%- endcomment -%}
+
+{{ 'section-hero-media.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign img_d = section.settings.image_desktop
+  assign img_m = section.settings.image_mobile
+  if img_m == blank
+    assign img_m = img_d
+  endif
+
+  if section.index == 1
+    assign img_loading = 'eager'
+    assign img_priority = 'high'
+  else
+    assign img_loading = 'lazy'
+    assign img_priority = 'auto'
+  endif
+
+  assign heading_tag = section.settings.heading_tag
+  assign focal_style = ''
+  if img_d != blank
+    assign focal_style = 'object-position: ' | append: img_d.presentation.focal_point
+  endif
+-%}
+
+{%- style -%}
+  {%- if section.settings.use_custom_font -%}
+    {{ section.settings.heading_font | font_face: font_display: 'swap' }}
+  {%- endif -%}
+  #Hero-{{ section.id }} {
+    --hero-text: {{ section.settings.text_color }};
+    --hero-overlay: {{ section.settings.overlay_color }};
+    --hero-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    --hero-content-width: {{ section.settings.content_width }}px;
+    --hero-heading-size: {{ section.settings.heading_size }}px;
+    --hero-heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
+    --hero-heading-spacing: {{ section.settings.heading_letter_spacing | divided_by: 100.0 }}em;
+    --hero-text-size: {{ section.settings.text_size }}px;
+    --hero-btn-bg: {{ section.settings.button_color }};
+    --hero-btn-text: {{ section.settings.button_text_color }};
+    --hero-btn-radius: {{ section.settings.button_radius }}px;
+    --hero-pad: {{ section.settings.content_padding }}px;
+    {%- if section.settings.use_custom_font %}
+      --hero-heading-font: {{ section.settings.heading_font.family }}, {{ section.settings.heading_font.fallback_families }};
+      --hero-heading-weight: {{ section.settings.heading_font.weight }};
+    {%- endif %}
+    {%- if section.settings.height_desktop == 'adapt' and img_d != blank %}
+      --hero-ratio-desktop: {{ img_d.aspect_ratio }};
+    {%- endif %}
+    {%- if section.settings.height_mobile == 'adapt' and img_m != blank %}
+      --hero-ratio-mobile: {{ img_m.aspect_ratio }};
+    {%- endif %}
+  }
+  {%- if section.settings.image_mobile != blank %}
+    @media screen and (max-width: 749px) {
+      #Hero-{{ section.id }} .hero-media__img {
+        object-position: {{ img_m.presentation.focal_point }};
+      }
+    }
+  {%- endif %}
+{%- endstyle -%}
+
+<section
+  id="Hero-{{ section.id }}"
+  class="hero-media hero-media--h-{{ section.settings.height_desktop }} hero-media--hm-{{ section.settings.height_mobile }} hero-media--pos-{{ section.settings.position_desktop }} hero-media--mpos-{{ section.settings.position_mobile }} hero-media--align-{{ section.settings.text_align }} hero-media--malign-{{ section.settings.text_align_mobile }}{% if section.settings.use_custom_font %} hero-media--custom-font{% endif %}"
+  aria-label="{{ section.settings.heading | strip_html | escape }}"
+>
+  <div class="hero-media__media">
+    {%- if img_d != blank -%}
+      <picture>
+        {%- if section.settings.image_mobile != blank -%}
+          <source
+            media="(max-width: 749px)"
+            srcset="
+              {{ img_m | image_url: width: 375 }} 375w,
+              {{ img_m | image_url: width: 550 }} 550w,
+              {{ img_m | image_url: width: 750 }} 750w,
+              {{ img_m | image_url: width: 1100 }} 1100w,
+              {{ img_m | image_url: width: 1500 }} 1500w
+            "
+            sizes="100vw"
+            width="{{ img_m.width }}"
+            height="{{ img_m.height }}"
+          >
+        {%- endif -%}
+        {{
+          img_d
+          | image_url: width: 3840
+          | image_tag:
+            widths: '750, 1100, 1500, 1780, 2000, 2560, 3000, 3840',
+            sizes: '100vw',
+            loading: img_loading,
+            fetchpriority: img_priority,
+            class: 'hero-media__img',
+            style: focal_style
+        }}
+      </picture>
+    {%- else -%}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'hero-media__img hero-media__placeholder' }}
+    {%- endif -%}
+  </div>
+
+  <div class="hero-media__inner page-width">
+    <div class="hero-media__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="hero-media__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <{{ heading_tag }} class="hero-media__heading">{{ section.settings.heading }}</{{ heading_tag }}>
+      {%- endif -%}
+
+      {%- if section.settings.subheading != blank -%}
+        <div class="hero-media__text rte">{{ section.settings.subheading }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.button_label_1 != blank or section.settings.button_label_2 != blank -%}
+        <div class="hero-media__buttons">
+          {%- if section.settings.button_label_1 != blank -%}
+            <a
+              {% if section.settings.button_link_1 == blank %}
+                role="link" aria-disabled="true"
+              {% else %}
+                href="{{ section.settings.button_link_1 }}"
+              {% endif %}
+              class="hero-media__btn hero-media__btn--{{ section.settings.button_style_1 }}"
+            >
+              {{- section.settings.button_label_1 | escape -}}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.button_label_2 != blank -%}
+            <a
+              {% if section.settings.button_link_2 == blank %}
+                role="link" aria-disabled="true"
+              {% else %}
+                href="{{ section.settings.button_link_2 }}"
+              {% endif %}
+              class="hero-media__btn hero-media__btn--{{ section.settings.button_style_2 }}"
+            >
+              {{- section.settings.button_label_2 | escape -}}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{%- if section.settings.height_desktop == 'full' or section.settings.height_mobile == 'full' -%}
+  <script>
+    (function () {
+      // "Full screen" means: from the top of the hero to the bottom of the screen,
+      // so the buttons are visible on load even with an announcement bar and a header above.
+      var hero = document.getElementById('Hero-{{ section.id }}');
+      if (!hero) return;
+      function setOffset() {
+        var top = hero.getBoundingClientRect().top + window.scrollY;
+        hero.style.setProperty('--hero-offset', Math.max(0, Math.round(top)) + 'px');
+      }
+      setOffset();
+      window.addEventListener('resize', setOffset, { passive: true });
+    })();
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Hero: desktop + mobile",
+  "tag": "div",
+  "class": "section-hero-media",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Desktop image",
+      "info": "1440 × 720 px or larger. Set the focal point in the image picker so the crop keeps the subject."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile image",
+      "info": "750 × 1100 px. If empty, the desktop image is used."
+    },
+    {
+      "type": "select",
+      "id": "height_desktop",
+      "label": "Height on desktop",
+      "options": [
+        { "value": "adapt", "label": "Adapt to image" },
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "full", "label": "Full screen" }
+      ],
+      "default": "large"
+    },
+    {
+      "type": "select",
+      "id": "height_mobile",
+      "label": "Height on mobile",
+      "options": [
+        { "value": "adapt", "label": "Adapt to image" },
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "full", "label": "Full screen" }
+      ],
+      "default": "full"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay colour",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 25
+    },
+    {
+      "type": "header",
+      "content": "Text"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small text above the heading",
+      "default": "New season"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Soft lines for long days"
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading tag",
+      "options": [
+        { "value": "h1", "label": "H1 (main heading of the page)" },
+        { "value": "h2", "label": "H2" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>Linen and washed cotton, cut to move with you.</p>"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text colour",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "button_label_1",
+      "label": "First button label",
+      "default": "Shop new in"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "First button link"
+    },
+    {
+      "type": "select",
+      "id": "button_style_1",
+      "label": "First button style",
+      "options": [
+        { "value": "solid", "label": "Solid" },
+        { "value": "outline", "label": "Outline" },
+        { "value": "link", "label": "Text link" }
+      ],
+      "default": "solid"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Second button label",
+      "default": "View the lookbook"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Second button link"
+    },
+    {
+      "type": "select",
+      "id": "button_style_2",
+      "label": "Second button style",
+      "options": [
+        { "value": "solid", "label": "Solid" },
+        { "value": "outline", "label": "Outline" },
+        { "value": "link", "label": "Text link" }
+      ],
+      "default": "outline"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button colour",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text colour",
+      "default": "#1c1b19"
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "label": "Button corner radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "position_desktop",
+      "label": "Text position on desktop",
+      "options": [
+        { "value": "top-left", "label": "Top left" },
+        { "value": "top-center", "label": "Top center" },
+        { "value": "top-right", "label": "Top right" },
+        { "value": "middle-left", "label": "Middle left" },
+        { "value": "middle-center", "label": "Middle center" },
+        { "value": "middle-right", "label": "Middle right" },
+        { "value": "bottom-left", "label": "Bottom left" },
+        { "value": "bottom-center", "label": "Bottom center" },
+        { "value": "bottom-right", "label": "Bottom right" }
+      ],
+      "default": "bottom-left"
+    },
+    {
+      "type": "select",
+      "id": "text_align",
+      "label": "Text alignment on desktop",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "position_mobile",
+      "label": "Text position on mobile",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "middle", "label": "Middle" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "bottom"
+    },
+    {
+      "type": "select",
+      "id": "text_align_mobile",
+      "label": "Text alignment on mobile",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Text block width",
+      "min": 320,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "default": 560
+    },
+    {
+      "type": "range",
+      "id": "content_padding",
+      "label": "Space around the text",
+      "min": 16,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "header",
+      "content": "Typography",
+      "info": "Use these to match the sizes in your Figma file."
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size on desktop",
+      "min": 28,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "label": "Heading size on mobile",
+      "min": 22,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 38
+    },
+    {
+      "type": "range",
+      "id": "heading_letter_spacing",
+      "label": "Heading letter spacing",
+      "min": -6,
+      "max": 30,
+      "step": 1,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Subheading size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "checkbox",
+      "id": "use_custom_font",
+      "label": "Use a different font for the heading",
+      "default": false
+    },
+    {
+      "type": "font_picker",
+      "id": "heading_font",
+      "label": "Heading font",
+      "default": "assistant_n4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero: desktop + mobile"
+    }
+  ]
+}
+{% endschema %}

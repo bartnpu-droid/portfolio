@@ -1,0 +1,222 @@
+{%- comment -%}
+  FAQ accordion. Works without JavaScript (native <details>), keyboard friendly,
+  optional "one open at a time", and optional FAQPage structured data for Google.
+{%- endcomment -%}
+
+{{ 'section-faq-accordion.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="faq-accordion color-{{ section.settings.color_scheme }} gradient">
+  <div class="faq-accordion__wrap page-width section-{{ section.id }}-padding faq-accordion--{{ section.settings.layout }}">
+    {%- if section.settings.heading != blank or section.settings.text != blank -%}
+      <div class="faq-accordion__intro">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="faq-accordion__heading {{ section.settings.heading_size }}">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="faq-accordion__text rte">{{ section.settings.text }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="faq-accordion__list">
+      {%- for block in section.blocks -%}
+        <details
+          class="faq-accordion__item"
+          {% if section.settings.one_open %}
+            name="faq-{{ section.id }}"
+          {% endif %}
+          {% if forloop.first and section.settings.open_first %}
+            open
+          {% endif %}
+          {{ block.shopify_attributes }}
+        >
+          <summary class="faq-accordion__question" id="Faq-{{ block.id }}">
+            <span>{{ block.settings.heading | escape }}</span>
+            <span class="faq-accordion__icon" aria-hidden="true"></span>
+          </summary>
+          <div class="faq-accordion__answer rte" role="region" aria-labelledby="Faq-{{ block.id }}">
+            {{ block.settings.answer }}
+          </div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{%- if section.settings.structured_data and section.blocks.size > 0 -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in section.blocks -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.heading | strip_html | json }},
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": {{ block.settings.answer | json }}
+            }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "FAQ accordion",
+  "tag": "section",
+  "class": "section section-faq-accordion",
+  "max_blocks": 30,
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Questions, answered"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "hxl", "label": "Large" }
+      ],
+      "default": "h1"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Can't find what you need? Write to us and we'll reply within a day.</p>"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout on desktop",
+      "options": [
+        { "value": "stacked", "label": "Heading above the questions" },
+        { "value": "side", "label": "Heading on the left" }
+      ],
+      "default": "side"
+    },
+    {
+      "type": "checkbox",
+      "id": "one_open",
+      "label": "Keep only one answer open at a time",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Open the first question",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "structured_data",
+      "label": "Add FAQ structured data for Google",
+      "info": "Use it on one FAQ section per page.",
+      "default": true
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Colour scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Question",
+          "default": "How long does shipping take?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Orders ship within 1–2 working days. Delivery takes 2–4 days in the UK and 5–8 days to the rest of Europe.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ accordion",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "heading": "How long does shipping take?",
+            "answer": "<p>Orders ship within 1–2 working days. Delivery takes 2–4 days in the UK and 5–8 days to the rest of Europe.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "heading": "Can I return something?",
+            "answer": "<p>Yes. You have 30 days to send items back unworn, and the return label is free.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "heading": "How do I find my size?",
+            "answer": "<p>Every product page has a size guide with measurements in cm. If you're between sizes, take the larger one: our linen is cut close to the body.</p>"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "heading": "How should I wash linen?",
+            "answer": "<p>Cold wash, gentle cycle, and dry flat. Linen gets softer with every wash.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

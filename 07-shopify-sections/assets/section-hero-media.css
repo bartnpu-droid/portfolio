@@ -1,0 +1,220 @@
+/* Hero: desktop + mobile images. All sizes and colours come from section settings (CSS variables). */
+
+.hero-media {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  color: var(--hero-text);
+  isolation: isolate;
+  min-height: var(--hero-min-h, 70svh);
+}
+
+.hero-media__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero-media__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay);
+  opacity: var(--hero-overlay-opacity);
+  pointer-events: none;
+}
+
+.hero-media__media picture,
+.hero-media__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-media__img {
+  object-fit: cover;
+}
+
+.hero-media__placeholder {
+  background: rgba(var(--color-foreground), 0.06);
+  fill: rgba(var(--color-foreground), 0.35);
+}
+
+.hero-media__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: var(--hero-pad);
+  padding-bottom: var(--hero-pad);
+  box-sizing: border-box;
+}
+
+.hero-media__content {
+  max-width: var(--hero-content-width);
+}
+
+.hero-media__eyebrow {
+  margin: 0 0 1.4rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: inherit;
+}
+
+.hero-media__heading {
+  margin: 0;
+  color: inherit;
+  font-family: var(--hero-heading-font, var(--font-heading-family));
+  font-style: var(--font-heading-style);
+  font-weight: var(--hero-heading-weight, var(--font-heading-weight));
+  font-size: var(--hero-heading-size-mobile);
+  letter-spacing: var(--hero-heading-spacing);
+  line-height: 1.06;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.hero-media__text {
+  margin-top: 1.6rem;
+  font-size: var(--hero-text-size);
+  line-height: 1.55;
+  color: inherit;
+}
+
+.hero-media__text p {
+  margin: 0;
+}
+
+.hero-media__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 2.8rem;
+}
+
+.hero-media__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 4.8rem;
+  padding: 0 2.8rem;
+  border-radius: var(--hero-btn-radius);
+  font-size: 1.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.hero-media__btn--solid {
+  background: var(--hero-btn-bg);
+  color: var(--hero-btn-text);
+  border: 1px solid var(--hero-btn-bg);
+}
+
+.hero-media__btn--solid:hover {
+  opacity: 0.88;
+}
+
+.hero-media__btn--outline {
+  background: transparent;
+  color: var(--hero-text);
+  border: 1px solid currentColor;
+}
+
+.hero-media__btn--outline:hover {
+  background: var(--hero-text);
+  color: var(--hero-btn-text);
+}
+
+.hero-media__btn--link {
+  min-height: auto;
+  padding: 0.4rem 0;
+  color: var(--hero-text);
+  border-bottom: 1px solid currentColor;
+  border-radius: 0;
+}
+
+.hero-media__btn:focus-visible {
+  outline: 2px solid var(--hero-text);
+  outline-offset: 3px;
+}
+
+.hero-media__btn[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Mobile (up to 749px) */
+@media screen and (max-width: 749px) {
+  .hero-media--hm-small { --hero-min-h: 50svh; }
+  .hero-media--hm-medium { --hero-min-h: 70svh; }
+  .hero-media--hm-large { --hero-min-h: 85svh; }
+  .hero-media--hm-full { --hero-min-h: calc(100svh - var(--hero-offset, 0px)); }
+  .hero-media--hm-adapt { --hero-min-h: 0; aspect-ratio: var(--hero-ratio-mobile, 0.68); }
+
+  .hero-media__inner { padding-left: 2rem; padding-right: 2rem; align-items: center; }
+  .hero-media__content { width: 100%; }
+
+  .hero-media--mpos-top .hero-media__inner { justify-content: flex-start; }
+  .hero-media--mpos-middle .hero-media__inner { justify-content: center; }
+  .hero-media--mpos-bottom .hero-media__inner { justify-content: flex-end; }
+
+  .hero-media--malign-left .hero-media__content { text-align: left; }
+  .hero-media--malign-center .hero-media__content { text-align: center; margin: 0 auto; }
+  .hero-media--malign-center .hero-media__buttons { justify-content: center; }
+
+  .hero-media__btn { padding: 0 2rem; }
+  .hero-media__btn--solid,
+  .hero-media__btn--outline { flex: 1 1 auto; }
+}
+
+/* Desktop (750px and up) */
+@media screen and (min-width: 750px) {
+  .hero-media--h-small { --hero-min-h: 45svh; }
+  .hero-media--h-medium { --hero-min-h: 65svh; }
+  .hero-media--h-large { --hero-min-h: 85svh; }
+  .hero-media--h-full { --hero-min-h: calc(100svh - var(--hero-offset, 0px)); }
+  .hero-media--h-adapt { --hero-min-h: 0; aspect-ratio: var(--hero-ratio-desktop, 2); }
+
+  .hero-media__heading { font-size: var(--hero-heading-size); }
+
+  .hero-media--pos-top-left .hero-media__inner,
+  .hero-media--pos-top-center .hero-media__inner,
+  .hero-media--pos-top-right .hero-media__inner { justify-content: flex-start; }
+
+  .hero-media--pos-middle-left .hero-media__inner,
+  .hero-media--pos-middle-center .hero-media__inner,
+  .hero-media--pos-middle-right .hero-media__inner { justify-content: center; }
+
+  .hero-media--pos-bottom-left .hero-media__inner,
+  .hero-media--pos-bottom-center .hero-media__inner,
+  .hero-media--pos-bottom-right .hero-media__inner { justify-content: flex-end; }
+
+  .hero-media--pos-top-left .hero-media__inner,
+  .hero-media--pos-middle-left .hero-media__inner,
+  .hero-media--pos-bottom-left .hero-media__inner { align-items: flex-start; }
+
+  .hero-media--pos-top-center .hero-media__inner,
+  .hero-media--pos-middle-center .hero-media__inner,
+  .hero-media--pos-bottom-center .hero-media__inner { align-items: center; }
+
+  .hero-media--pos-top-right .hero-media__inner,
+  .hero-media--pos-middle-right .hero-media__inner,
+  .hero-media--pos-bottom-right .hero-media__inner { align-items: flex-end; }
+
+  .hero-media--align-left .hero-media__content { text-align: left; }
+  .hero-media--align-center .hero-media__content { text-align: center; }
+  .hero-media--align-center .hero-media__buttons { justify-content: center; }
+  .hero-media--align-right .hero-media__content { text-align: right; }
+  .hero-media--align-right .hero-media__buttons { justify-content: flex-end; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-media__btn { transition: none; }
+}

@@ -1,0 +1,46 @@
+{
+  "name": "Free shipping bar",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Shows how much is left until free shipping in the cart drawer and on the cart page."
+    },
+    {
+      "type": "checkbox",
+      "id": "fsb_enable",
+      "label": "Show the free shipping bar",
+      "default": true
+    },
+    {
+      "type": "number",
+      "id": "fsb_threshold",
+      "label": "Free shipping from (store currency)",
+      "default": 100
+    },
+    {
+      "type": "text",
+      "id": "fsb_progress_text",
+      "label": "Message before the goal",
+      "info": "[amount] is replaced with the amount left.",
+      "default": "You're [amount] away from free shipping"
+    },
+    {
+      "type": "text",
+      "id": "fsb_done_text",
+      "label": "Message when reached",
+      "default": "You've unlocked free shipping"
+    },
+    {
+      "type": "color",
+      "id": "fsb_color",
+      "label": "Bar colour",
+      "default": "#1c1b19"
+    },
+    {
+      "type": "color",
+      "id": "fsb_track_color",
+      "label": "Track colour",
+      "default": "#e7e3dc"
+    }
+  ]
+}

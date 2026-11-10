@@ -64,3 +64,12 @@ Folder: `06-pdf-invoices-to-excel`
 - UK, EU and US formats, multi-page invoices; quantity × price, line sums and totals are checked, problems are flagged
 - Output: Excel with Invoices / Line items / Summary tabs, plus CSV; 14 tests: `cd 06-pdf-invoices-to-excel && python -m pytest`
 Screens: `06-pdf-invoices-to-excel/screenshots/`
+
+## 07 — Shopify sections: hero from a design, free shipping bar, FAQ
+Folder: `07-shopify-sections`
+Custom Online Store 2.0 sections for "Solenne", a fictional linen brand, built on Dawn and tested in a Shopify development store. No apps.
+- Hero with separate desktop and mobile images, two buttons, overlay, 9 text positions, typography settings to match a Figma file; first hero loads with high priority, no layout jump
+- Free shipping progress bar in the cart drawer and on the cart page, updates instantly after every cart change
+- FAQ accordion on native `<details>`, one-open-at-a-time without JavaScript, optional FAQPage structured data
+- Every text, image, colour and position is a setting in the theme editor; Shopify Theme Check: 0 issues
+Screens: `07-shopify-sections/screenshots/`

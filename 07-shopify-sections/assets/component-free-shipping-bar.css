@@ -1,0 +1,49 @@
+/* Free shipping progress bar (cart drawer + cart page) */
+
+.fsb {
+  margin: 0 0 1.6rem;
+  padding: 1.4rem 1.6rem;
+  border-radius: 0.6rem;
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+.drawer__inner .fsb {
+  margin: 0 0 1.2rem;
+}
+
+.fsb__message {
+  margin: 0 0 1rem;
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+
+.fsb__message .money,
+.fsb__message strong {
+  font-weight: 600;
+}
+
+.fsb__track {
+  position: relative;
+  height: 0.6rem;
+  border-radius: 99rem;
+  background: var(--fsb-track);
+  overflow: hidden;
+}
+
+.fsb__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: var(--fsb-color);
+  transition: width 0.4s ease;
+}
+
+.fsb--done .fsb__message {
+  font-weight: 600;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fsb__fill {
+    transition: none;
+  }
+}

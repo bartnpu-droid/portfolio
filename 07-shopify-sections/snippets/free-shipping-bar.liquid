@@ -1,0 +1,49 @@
+{%- comment -%}
+  Free shipping progress bar for the cart drawer and the cart page.
+  Settings: Theme settings → Free shipping bar. It sits inside the parts of the cart that Dawn
+  re-renders after every change, so it updates without extra JavaScript.
+  The goal is set in the store's main currency.
+{%- endcomment -%}
+
+{%- if settings.fsb_enable and settings.fsb_threshold > 0 -%}
+  {{ 'component-free-shipping-bar.css' | asset_url | stylesheet_tag }}
+
+  {%- if cart != empty -%}
+    {%- liquid
+      assign goal = settings.fsb_threshold | times: 100
+      assign total = cart.total_price
+      assign remaining = goal | minus: total
+      if remaining < 0
+        assign remaining = 0
+      endif
+      assign percent = total | times: 100 | divided_by: goal
+      if percent > 100
+        assign percent = 100
+      endif
+      assign remaining_money = remaining | money | prepend: '<strong>' | append: '</strong>'
+    -%}
+
+    <div
+      class="fsb{% if remaining == 0 %} fsb--done{% endif %}"
+      style="--fsb-color: {{ settings.fsb_color }}; --fsb-track: {{ settings.fsb_track_color }};"
+    >
+      <p class="fsb__message" role="status">
+        {%- if remaining == 0 -%}
+          {{ settings.fsb_done_text | escape }}
+        {%- else -%}
+          {{ settings.fsb_progress_text | escape | replace: '[amount]', remaining_money }}
+        {%- endif -%}
+      </p>
+      <div
+        class="fsb__track"
+        role="progressbar"
+        aria-label="Free shipping progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="{{ percent }}"
+      >
+        <span class="fsb__fill" style="width: {{ percent }}%;"></span>
+      </div>
+    </div>
+  {%- endif -%}
+{%- endif -%}
