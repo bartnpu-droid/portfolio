@@ -1,6 +1,6 @@
 # Shopify sections: hero from a design, free shipping bar, FAQ
 
-Three custom Online Store 2.0 sections for **Solenne**, a fictional linen clothing brand. Built on Shopify's Dawn theme (16.1.1) and tested in a Shopify development store. No apps: just Liquid, CSS and a few lines of JavaScript, and every text, image, colour and position is a setting in the theme editor.
+Three custom Online Store 2.0 sections for **Solenne**, a fictional summer clothing brand. Built on Shopify's Dawn theme (16.1.1) and tested in a Shopify development store with a full catalog: 8 products with sizes, two collections, menus, product pages and a cart. No apps: just Liquid, CSS and a few lines of JavaScript, and every text, image, colour and position is a setting in the theme editor.
 
 ![Hero on desktop and mobile](screenshots/cover.jpg)
 
@@ -21,7 +21,7 @@ Three custom Online Store 2.0 sections for **Solenne**, a fictional linen clothi
 
 `snippets/free-shipping-bar.liquid` + `assets/component-free-shipping-bar.css`
 
-- Shows "You're $25.15 away from free shipping" with a progress bar in the cart drawer and on the cart page, then "You've unlocked free shipping".
+- Shows "You're $62.00 away from free shipping" with a progress bar in the cart drawer and on the cart page, then "You've unlocked free shipping".
 - It sits inside the parts of the cart that Dawn re-renders after every change, so it updates instantly without extra JavaScript.
 - Theme settings → Free shipping bar: on/off, the goal, both messages (`[amount]` is replaced with the amount left), bar and track colours.
 
@@ -37,6 +37,14 @@ Three custom Online Store 2.0 sections for **Solenne**, a fictional linen clothi
 - Heading on the left or above the questions, open the first question, colour scheme, padding. In the theme editor each block is listed by its question.
 
 ![FAQ in the theme editor](screenshots/faq-theme-editor.jpg)
+
+## The store around the sections
+
+The demo store is password-protected, so here is the whole home page and a product page. The product page uses Dawn's own blocks with size, fabric and shipping tabs.
+
+![Home page of the demo store](screenshots/store-home.jpg)
+
+![Product page](screenshots/product-page.jpg)
 
 ## Install in Dawn (or another Online Store 2.0 theme)
 
@@ -54,6 +62,6 @@ Three custom Online Store 2.0 sections for **Solenne**, a fictional linen clothi
 ## Checked
 
 - Shopify Theme Check: 0 issues in these files.
-- Tested in a Shopify development store: desktop and mobile preview, cart drawer and cart page, quantity changes below and above the free shipping goal.
+- Tested in a Shopify development store: desktop and mobile preview, cart drawer and cart page, adding items and changing quantities below and above the free shipping goal.
 
-Photos are from Shopify's free image library. Products in the cart screenshots are Shopify's generated test data. Dawn itself is Shopify's theme and is not included here.
+Photos are from Shopify's free image library (Burst). Solenne and its products are made up for this demo. Dawn itself is Shopify's theme and is not included here.

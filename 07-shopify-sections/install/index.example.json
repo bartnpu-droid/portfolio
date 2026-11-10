@@ -7,16 +7,16 @@
         "height_mobile": "full",
         "overlay_color": "#1c1b19",
         "overlay_opacity": 25,
-        "eyebrow": "Summer linen · new in",
+        "eyebrow": "The summer edit · new in",
         "heading": "Soft lines for long days",
         "heading_tag": "h1",
-        "subheading": "<p>Washed linen and cotton, cut to move with you.</p>",
+        "subheading": "<p>Light dresses and easy tees in cotton and linen.</p>",
         "text_color": "#ffffff",
         "button_label_1": "Shop new in",
         "button_link_1": "shopify://collections/all",
         "button_style_1": "solid",
-        "button_label_2": "Lookbook",
-        "button_link_2": "shopify://collections/all",
+        "button_label_2": "Dresses",
+        "button_link_2": "shopify://collections/dresses",
         "button_style_2": "outline",
         "button_color": "#ffffff",
         "button_text_color": "#1c1b19",
@@ -33,8 +33,8 @@
         "text_size": 18,
         "use_custom_font": false,
         "heading_font": "assistant_n4",
-        "image_desktop": "shopify://shop_images/woman-in-black-dress-at-beach.jpg",
-        "image_mobile": "shopify://shop_images/woman-dances-on-the-sand.jpg"
+        "image_desktop": "shopify://shop_images/solenne-hero-desktop.jpg",
+        "image_mobile": "shopify://shop_images/solenne-hero-mobile.jpg"
       }
     },
     "featured_collection": {
@@ -42,15 +42,28 @@
       "settings": {
         "title": "New in",
         "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
         "collection": "all",
-        "products_to_show": 4,
+        "products_to_show": 8,
         "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
         "show_view_all": true,
+        "view_all_style": "outline",
         "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 64,
-        "padding_bottom": 40
-      },
-      "disabled": true
+        "padding_bottom": 56
+      }
     },
     "faq": {
       "type": "faq-accordion",
@@ -72,15 +85,15 @@
         "q3": {
           "type": "question",
           "settings": {
-            "answer": "<p>Every product page has a size guide in cm. If you're between sizes, take the larger one: our linen is cut close to the body.</p>",
+            "answer": "<p>Every product page has size and fit notes. If you're between sizes, take the larger one: our dresses are cut close at the bust.</p>",
             "heading": "How do I find my size?"
           }
         },
         "q4": {
           "type": "question",
           "settings": {
-            "answer": "<p>Cold wash, gentle cycle, and dry flat. Linen gets softer with every wash.</p>",
-            "heading": "How should I wash linen?"
+            "answer": "<p>Cold wash on a gentle cycle and dry flat. Cotton and linen get softer with every wash.</p>",
+            "heading": "How should I wash my dress?"
           }
         },
         "q5": {
@@ -110,11 +123,122 @@
         "padding_top": 72,
         "padding_bottom": 88
       }
+    },
+    "story": {
+      "type": "image-with-text",
+      "blocks": {
+        "caption": {
+          "type": "caption",
+          "settings": {
+            "caption": "Our story",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Made for slow summer days",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Solenne began with one dress we wanted to live in all summer. Now it is a small line of dresses and tees in cotton and linen, made in short runs so nothing sits in a warehouse.</p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop dresses",
+            "button_link": "shopify://collections/dresses",
+            "button_style_secondary": true
+          }
+        }
+      },
+      "block_order": [
+        "caption",
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/woman-in-a-blue-sundress-leans-against-a-white-wall.jpg",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-2",
+        "color_scheme": "scheme-2",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "promise": {
+      "type": "multicolumn",
+      "blocks": {
+        "c1": {
+          "type": "column",
+          "settings": {
+            "title": "Free shipping over $100",
+            "text": "<p>Orders leave us in 1–2 working days, tracked all the way to your door.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "c2": {
+          "type": "column",
+          "settings": {
+            "title": "30-day returns",
+            "text": "<p>Changed your mind? Send it back unworn and the return label is on us.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "c3": {
+          "type": "column",
+          "settings": {
+            "title": "Cotton and linen only",
+            "text": "<p>Natural fabrics that breathe on hot days and soften with every wash.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 72,
+        "padding_bottom": 16
+      }
     }
   },
   "order": [
     "hero",
     "featured_collection",
+    "story",
+    "promise",
     "faq"
   ]
 }
