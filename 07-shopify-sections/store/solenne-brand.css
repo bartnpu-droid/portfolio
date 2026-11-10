@@ -148,3 +148,63 @@
   line-height: 1.5;
   text-transform: uppercase;
 }
+
+/*
+  Product cards: each photo sits in a linen mount with a soft shadow and lifts a little on hover.
+  Theme settings → Product cards: style "Card", image padding 10 px, colour scheme 1.
+*/
+.product-grid {
+  --grid-desktop-horizontal-spacing: 24px;
+  --grid-desktop-vertical-spacing: 40px;
+  --grid-mobile-horizontal-spacing: 10px;
+  --grid-mobile-vertical-spacing: 20px;
+}
+
+.product-card-wrapper .card--standard .card__inner,
+.product-card-wrapper .card--card {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(28, 27, 25, 0.06), 0 12px 28px -14px rgba(28, 27, 25, 0.32);
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.product-card-wrapper .card--card {
+  background: linear-gradient(160deg, #fcfaf7 0%, #f0eae1 100%);
+}
+
+@media screen and (min-width: 990px) {
+  .product-card-wrapper:hover .card--standard .card__inner,
+  .product-card-wrapper:hover .card--card {
+    transform: translateY(-6px);
+    box-shadow: 0 2px 4px rgba(28, 27, 25, 0.06), 0 28px 44px -22px rgba(28, 27, 25, 0.45);
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .product-card-wrapper .card--standard .card__inner,
+  .product-card-wrapper .card--card {
+    box-shadow: 0 1px 2px rgba(28, 27, 25, 0.06), 0 8px 18px -10px rgba(28, 27, 25, 0.3);
+  }
+
+  .product-card-wrapper .card {
+    --image-padding: 0.6rem;
+  }
+
+  /* Two lines for every name, so the cards in a row end at the same height */
+  .product-card-wrapper .card__heading {
+    min-height: 3em;
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
+  }
+}
+
+/* Catalog toolbar: filter and sort labels as small uppercase text */
+body .facets__heading,
+body .facets__summary,
+body .facet-filters__label,
+body .facet-filters__sort,
+body .product-count__text,
+body .mobile-facets__open-label {
+  font-size: 1.1rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}

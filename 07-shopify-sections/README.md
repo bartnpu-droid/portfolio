@@ -40,9 +40,11 @@ Three custom Online Store 2.0 sections for **Solenne**, a fictional summer cloth
 
 ## The store around the sections
 
-The demo store is password-protected, so here is the whole home page and a product page. Everything around the three sections is Dawn's own sections and settings (lookbook, story block, size, fabric and shipping tabs on the product page), plus one small stylesheet for the brand look: `store/solenne-brand.css` (the wordmark, small uppercase labels, product cards, a phone fix for the header).
+The demo store is password-protected, so here is the whole home page, the catalog and a product page. Everything around the three sections is Dawn's own sections and settings (lookbook, story block, size, fabric and shipping tabs on the product page), plus one small stylesheet for the brand look: `store/solenne-brand.css` (the wordmark, small uppercase labels, product cards in a linen mount with a soft shadow that lifts on hover, a phone fix for the header).
 
 ![Home page of the demo store](screenshots/store-home.jpg)
+
+![Catalog on desktop and phone](screenshots/catalog.jpg)
 
 ![Product page](screenshots/product-page.jpg)
 
