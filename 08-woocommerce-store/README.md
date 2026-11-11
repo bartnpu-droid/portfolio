@@ -2,11 +2,11 @@
 
 A complete WooCommerce store for **Ombra**, a made-up candle and home fragrance brand: a custom block theme (no page builder) and a small plugin with the store features clients ask for most. Built and tested on WordPress 7.1 and WooCommerce 11.2. Every product photo was modelled, lit and rendered in Blender for this demo.
 
-**Live demo:** [open the store in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bartnpu-droid/portfolio/main/08-woocommerce-store/playground/blueprint.json). It runs in the browser, nothing to install: WordPress, WooCommerce, the theme, the plugin and the products are set up in about a minute. You are logged in as the store admin, so the settings, products and orders are one click away (bottom-left corner). Orders are not real and nothing is charged.
+**Live demo:** [open the store in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/bartnpu-droid/portfolio/main/08-woocommerce-store/playground/blueprint.json) (short link: [bartnpu-droid.github.io/portfolio/ombra](https://bartnpu-droid.github.io/portfolio/ombra/)). It runs in the browser, nothing to install: WordPress, WooCommerce, the theme, the plugin and the products are set up in about a minute. You are logged in as the store admin, so the settings, products and orders are one click away (bottom-right corner). Orders are not real and nothing is charged.
 
 ![Home page on desktop and phone](screenshots/cover.jpg)
 
-Demo video (45 s): [`ombra-woocommerce-demo.mp4`](ombra-woocommerce-demo.mp4)
+Demo video (53 s): [`ombra-woocommerce-demo.mp4`](ombra-woocommerce-demo.mp4)
 
 ## The plugin: Ombra Store Tools
 
@@ -49,7 +49,13 @@ Demo video (45 s): [`ombra-woocommerce-demo.mp4`](ombra-woocommerce-demo.mp4)
 
 ![Shop page on desktop and phone](screenshots/catalog.jpg)
 
+Every section is a pattern in the Site Editor, so texts, images and colours can be changed without touching code:
+
+![The home page template in the Site Editor](screenshots/site-editor.jpg)
+
 ![Product page](screenshots/product-page.jpg)
+
+The whole home page in one image: [`screenshots/store-home.jpg`](screenshots/store-home.jpg)
 
 ## Product photos
 

@@ -26,7 +26,11 @@ class Free_Shipping {
 	 * Hooks.
 	 */
 	public static function init() {
-		add_action( 'woocommerce_blocks_loaded', array( __CLASS__, 'register_store_api_data' ) );
+		if ( did_action( 'woocommerce_blocks_loaded' ) ) {
+			self::register_store_api_data();
+		} else {
+			add_action( 'woocommerce_blocks_loaded', array( __CLASS__, 'register_store_api_data' ) );
+		}
 		add_action( 'woocommerce_blocks_cart_block_registration', array( __CLASS__, 'register_integration' ) );
 		add_action( 'woocommerce_blocks_checkout_block_registration', array( __CLASS__, 'register_integration' ) );
 		add_filter( 'woocommerce_package_rates', array( __CLASS__, 'hide_paid_when_free' ), 100 );

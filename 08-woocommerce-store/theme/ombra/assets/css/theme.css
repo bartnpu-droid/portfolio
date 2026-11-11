@@ -191,6 +191,17 @@ p {
 	text-decoration: none;
 }
 
+/* Below 1100px the menu goes behind the menu button (core switches only at 600px) */
+@media (min-width: 600px) and (max-width: 1099px) {
+	.ombra-nav .wp-block-navigation__responsive-container-open:not(.always-shown) {
+		display: flex;
+	}
+
+	.ombra-nav .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+		display: none;
+	}
+}
+
 /* Mobile menu overlay */
 .ombra-nav .wp-block-navigation__responsive-container.is-menu-open {
 	background-color: var(--wp--preset--color--base) !important;
@@ -357,6 +368,7 @@ p {
 }
 
 .ombra-points {
+	list-style: none;
 	padding: 0;
 	margin: 1.6rem 0;
 	display: grid;
@@ -642,15 +654,12 @@ p {
 	color: var(--wp--preset--color--base);
 }
 
-.ombra-product .wc-block-components-quantity-selector {
+/* Quantity stepper as a pill, like the button next to it */
+.ombra-product .wc-block-add-to-cart-with-options__quantity-selector {
 	border-radius: 999px;
 	border-color: var(--ombra-line);
-	min-height: 3rem;
-}
-
-.ombra-product .wc-block-components-quantity-selector::after {
-	border-radius: 999px;
-	border-color: var(--ombra-line);
+	overflow: hidden;
+	padding: 0 0.35rem;
 }
 
 .ombra-product .wp-block-woocommerce-add-to-cart-with-options .wp-block-button__link,
@@ -780,9 +789,9 @@ p {
 /* Demo only: shortcut to the admin for logged-in visitors of the live demo */
 .ombra-demo-note {
 	position: fixed;
-	left: 1rem;
+	right: 1rem;
 	bottom: 1rem;
-	z-index: 60;
+	z-index: 30;
 	margin: 0;
 	padding: 0.65rem 1.1rem;
 	border-radius: 999px;

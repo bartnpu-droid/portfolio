@@ -9,7 +9,7 @@ FONTS = Path(os.environ.get("OMBRA_FONTS", Path(__file__).resolve().parent / "fo
 PX_PER_M = 20000  # label texture resolution: 2 px per 0.1 mm
 
 PAPER = (243, 237, 227)
-INK = (38, 33, 29)
+INK = (24, 21, 19)
 EMBER = (164, 83, 46)
 KRAFT = (196, 160, 118)
 

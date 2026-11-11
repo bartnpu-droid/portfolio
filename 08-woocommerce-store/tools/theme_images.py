@@ -54,5 +54,15 @@ tiles = {
 }
 for name, (file, cx) in tiles.items():
     save(crop_frac(load(file), 4 / 5, cx), name, (720, 900))
+def zoom(img, frac, cy=0.5):
+    """Square crop of a fraction of the image, centred horizontally, at height cy."""
+    if img is None:
+        return None
+    w, h = img.size
+    s = round(min(w, h) * frac)
+    top = min(max(0, round(cy * h - s / 2)), h - s)
+    return img.crop(((w - s) // 2, top, (w - s) // 2 + s, top + s))
+
+
 for key in ("fig", "salt", "amber"):
-    save(load(f"jar-{key}-200-lit.jpg"), f"scent-{key}.jpg", (800, 800))
+    save(zoom(load(f"jar-{key}-200-lit.jpg"), 0.7, 0.5), f"scent-{key}.jpg", (800, 800))

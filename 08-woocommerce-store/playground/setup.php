@@ -130,12 +130,17 @@ function ombra_setup_image( $file, $alt ) {
 			'fields'      => 'ids',
 		)
 	);
-	if ( $existing ) {
-		update_post_meta( $existing[0], '_wp_attachment_image_alt', $alt );
-		return (int) $existing[0];
-	}
 	$path = trailingslashit( OMBRA_IMAGES ) . $file;
-	if ( ! file_exists( $path ) ) {
+	$hash = file_exists( $path ) ? md5_file( $path ) : '';
+	if ( $existing ) {
+		// Same photo as last time: keep it. A new render of the same file replaces the old one.
+		if ( ! $hash || get_post_meta( $existing[0], '_ombra_hash', true ) === $hash ) {
+			update_post_meta( $existing[0], '_wp_attachment_image_alt', $alt );
+			return (int) $existing[0];
+		}
+		wp_delete_attachment( $existing[0], true );
+	}
+	if ( ! $hash ) {
 		ombra_setup_log( "Missing image: $file" );
 		return 0;
 	}
@@ -154,6 +159,7 @@ function ombra_setup_image( $file, $alt ) {
 		return 0;
 	}
 	update_post_meta( $id, '_ombra_source', $file );
+	update_post_meta( $id, '_ombra_hash', $hash );
 	update_post_meta( $id, '_wp_attachment_image_alt', $alt );
 	return (int) $id;
 }

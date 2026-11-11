@@ -342,9 +342,9 @@ def wood(name="ash", color_a="#C9AE8C", color_b="#A88A66"):
     l.new(coord.outputs["Object"], mapping.inputs["Vector"])
     wave = n.new("ShaderNodeTexWave")
     wave.wave_type = "BANDS"
-    wave.inputs["Scale"].default_value = 38
-    wave.inputs["Distortion"].default_value = 9
-    wave.inputs["Detail"].default_value = 4
+    wave.inputs["Scale"].default_value = 30
+    wave.inputs["Distortion"].default_value = 3
+    wave.inputs["Detail"].default_value = 2
     l.new(mapping.outputs["Vector"], wave.inputs["Vector"])
     ramp = n.new("ShaderNodeValToRGB")
     ramp.color_ramp.elements[0].color = srgb(color_b)
@@ -890,7 +890,7 @@ def studio(mood="day", backdrop="#E6DDD1"):
     return sweep
 
 
-def camera(target, height_frac, obj_h, aspect=1.0, lens=85, elev_deg=9.0, shift_x=0.0, fstop=4.0):
+def camera(target, height_frac, obj_h, aspect=1.0, lens=85, elev_deg=9.0, shift_x=0.0, fstop=5.6, front=0.03):
     cam_data = bpy.data.cameras.new("cam")
     cam_data.lens = lens
     cam_data.sensor_fit = "AUTO"
@@ -908,7 +908,7 @@ def camera(target, height_frac, obj_h, aspect=1.0, lens=85, elev_deg=9.0, shift_
     cam.rotation_euler = (t - cam.location).to_track_quat("-Z", "Y").to_euler()
     cam_data.shift_x = shift_x
     cam_data.dof.use_dof = True
-    cam_data.dof.focus_distance = dist
+    cam_data.dof.focus_distance = dist - front  # focus on the label, not the middle of the jar
     cam_data.dof.aperture_fstop = fstop
     cam_data.clip_start = 0.01
     return cam
